@@ -66,10 +66,12 @@ are retained in the lockfile, with security fixes applied to the scaffold versio
 Read [AGENTS.md](AGENTS.md) and [the content policy](docs/content-policy.md) before
 editing. `CLAUDE.md` points to the same rules so instructions cannot drift.
 
-To add a lesson, add a JSON file under `content/lessons/` following a neighboring
-record. Give it a unique slug and order and use a category from `content/guide.json`. Add a verified
-hadith record if needed, then review and update its integrity digest deliberately.
-`npm run content:build` discovers the lesson; no route or component edit is needed.
+To add a lesson, add a JSON file under `content/lessons/` following a neighbouring
+record. Give it a unique slug and order, and use a category from `content/guide.json`.
+If it needs a new narration, collate that narration against the printed edition first,
+record its كتاب, باب and edition page, run `npm run verify:sources`, and only then
+update the integrity digest deliberately. `npm run content:build` discovers the lesson;
+no route or component edit is needed.
 
 Quran text comes from the unmodified, checksum-pinned Tanzil corpus used by
 [learn-tajweed](https://github.com/edriso/learn-tajweed). Verses are resolved by numeric
