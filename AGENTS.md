@@ -21,6 +21,8 @@ before changing the app or build pipeline. These rules apply to agents and human
 - Do not invent consensus. State relevant disagreement with reliable references or omit
   the disputed issue from this introductory guide. Refer personal fatwas to qualified scholars.
 - Evidence must support the actual claim. Search snippets and AI memory are not verification.
+- Read the list of famous narrations that are not in either Sahih, and of the numbering
+  traps, at the end of `docs/content-policy.md` before adding any narration.
 - No images of people, music, advertising, or manipulative engagement mechanics.
 - No scores, streaks, badges, rankings, or claims to measure piety.
 - Source corrections require rechecking the source and documenting the change; a checksum
@@ -38,6 +40,9 @@ before changing the app or build pipeline. These rules apply to agents and human
   (Noto Naskh Arabic); Reem Kufi is for headings only. Both cap at weight 700.
 - Semantic headings, visible focus, a skip link, readable contrast, 44px controls,
   keyboard access, narrow screens, and 200% zoom are requirements.
+- Render every number through `lib/format.ts`. `toLocaleString('ar')` looks right in
+  dev and silently returns Latin digits on the Workers runtime, which has no Arabic
+  locale data.
 - Do not add packages without a concrete need. Preserve the lockfile. Document setup.
 - Keep the site functional without JavaScript for reading and navigation.
 - Add third-party asset/data licenses to NOTICE. Preserve Tanzil attribution.
