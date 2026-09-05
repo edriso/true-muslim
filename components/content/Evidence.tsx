@@ -42,7 +42,7 @@ export function Hadith({ id }: { id: string }) {
           <ArrowUpLeft size={15} aria-hidden="true" />
         </a>
         <span>
-          {record.book} · الراوي: {record.narrator} {record.honorific}
+          الراوي: {record.narrator} {record.honorific}
         </span>
       </figcaption>
     </figure>
