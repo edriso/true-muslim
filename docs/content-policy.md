@@ -45,6 +45,11 @@ Sultaniyya edition and Muslim numbering follows Abd al-Baqi, so the printed numb
 must match the number in the URL. Suffixed Muslim identifiers (1955a, 2702b) mark
 successive narrations under one printed number; link the page carrying that narration.
 
+`excerpt` marks a partial quotation of the prophetic wording, not a partial
+quotation of the page. A matn followed only by isnad notes (تابعه، ورواه، وقال لنا)
+is complete, so it is `false`. A matn quoted from the middle of a longer saying, or
+lifted out of a surrounding story or dialogue, is `true`.
+
 A quotation must be readable as printed. An excerpt that opens with a connective
 (ثم، و) and has no antecedent is not acceptable under the default line
 "قال رسول الله صلى الله عليه وسلم". Either widen the excerpt to a self-contained span
