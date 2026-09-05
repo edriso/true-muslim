@@ -54,8 +54,11 @@ A quotation must be readable as printed. An excerpt that opens with a connective
 (ثم، و) and has no antecedent is not acceptable under the default line
 "قال رسول الله صلى الله عليه وسلم". Either widen the excerpt to a self-contained span
 or set `attribution` to the wording that actually introduces it — for example a
-Companion's question in a narration shaped as a dialogue. Never paraphrase a narration
-into the attribution line and never present editorial framing as part of the quote.
+Companion's question in a narration shaped as a dialogue. `attribution` may hold only one of
+two things: the narration's own framing, copied from the printed page with Arabic
+punctuation added, or the narrator introducing their own report. `npm run
+verify:sources` enforces exactly that. Never paraphrase a narration into it, and
+never put editorial explanation there — that belongs in the lesson's `meaning`.
 
 ## Review checklist
 
@@ -93,6 +96,7 @@ Foundation summaries were checked against Tafsir al-Sa'di hosted by King Saud Un
 
 - https://quran.ksu.edu.sa/tafseer/saadi/sura16-aya90.html
 - https://quran.ksu.edu.sa/tafseer/saadi/sura4-aya58.html
+- https://quran.ksu.edu.sa/tafseer/saadi/sura2-aya177.html
   They are brief editorial summaries, not verbatim tafsir or independent rulings.
   Justice also links 60:8 for kindness and fairness toward non-hostile non-Muslims.
 

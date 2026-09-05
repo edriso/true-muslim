@@ -87,6 +87,15 @@ for (const [id, record] of Object.entries(records)) {
     );
   if (!fold(printed.body).includes(fold(record.text)))
     problems.push('text not found on the printed page');
+  // `attribution` is either the narration's own framing, which must appear on the
+  // printed page, or the narrator introducing their own report, which is already
+  // verified through the narrator field. Nothing else may go in it.
+  if (record.attribution) {
+    const quoted = fold(printed.body).includes(fold(record.attribution));
+    const namesNarrator = fold(record.attribution).includes(fold(record.narrator));
+    if (!quoted && !namesNarrator)
+      problems.push('attribution is neither printed wording nor the narrator');
+  }
   // Narration suffixes (1955a) share one printed number with their siblings.
   const number = toArabicDigits(record.number.replace(/[a-z]+$/u, ''));
   if (!printed.body.includes(number))
