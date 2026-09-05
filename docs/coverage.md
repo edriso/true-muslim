@@ -48,6 +48,11 @@ Companion who asked, so the quotation is never presented as a sentence it is not
 - The site does not settle disputed questions of fiqh, evaluate anyone's faith, or
   suggest that reading the lessons has achieved anything.
 
+The fifth category is deliberately the smallest. It exists because stewardship of
+what cannot speak for itself is a real relationship with its own classical chapters,
+not because the two lessons had nowhere else to go — but two is thin, and it should
+grow before it is treated as settled.
+
 ## What is deliberately not here
 
 Detailed rulings, a curriculum of worship, biography, creed beyond what the lessons

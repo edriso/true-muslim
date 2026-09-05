@@ -92,7 +92,9 @@ for (const [id, record] of Object.entries(records)) {
   // verified through the narrator field. Nothing else may go in it.
   if (record.attribution) {
     const quoted = fold(printed.body).includes(fold(record.attribution));
-    const namesNarrator = fold(record.attribution).includes(fold(record.narrator));
+    const namesNarrator = fold(record.attribution).includes(
+      fold(record.narrator),
+    );
     if (!quoted && !namesNarrator)
       problems.push('attribution is neither printed wording nor the narrator');
   }
