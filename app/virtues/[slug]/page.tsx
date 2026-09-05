@@ -67,8 +67,8 @@ export default async function LessonPage({ params }: Props) {
           <Ayah reference={lesson.ayah} />
           <Hadith id={lesson.hadith} />
           <p className="evidence-note">
-            موضع الحديث: {getHadith(lesson.hadith).chapter} — من{' '}
-            {getHadith(lesson.hadith).book}.
+            موضع الحديث: {getHadith(lesson.hadith).book} ·{' '}
+            {getHadith(lesson.hadith).chapter}
           </p>
         </section>
         <section className="article-section avoid-box">

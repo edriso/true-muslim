@@ -8,7 +8,7 @@ const verses = JSON.parse(readFileSync('content/quran.generated.json', 'utf8'));
 const hadith = JSON.parse(readFileSync('data/hadith.json', 'utf8'));
 for (const [path, title, lesson] of [
   ['/', 'مسلم بحق'],
-  ['/about', 'الفكرة والمصادر'],
+  ['/about', 'عن الموقع'],
   ['/daleel', 'الدليل والمصادر'],
   ...lessons.map((l) => [`/virtues/${l.slug}`, l.title, l]),
 ]) {
@@ -48,6 +48,11 @@ for (const [path, title, lesson] of [
         html.includes(label),
         `Missing full hadith identifier: ${item.slug}`,
       );
+      for (const field of ['book', 'chapter', 'editionUrl', 'edition'])
+        assert.ok(
+          html.includes(record[field]),
+          `Missing narration ${field}: ${item.slug}`,
+        );
     }
     assert.ok(html.includes('ما الذي لا يدّعيه هذا الموقع؟'));
     assert.ok(html.includes('وليست حديثًا نبويًا'));
@@ -65,6 +70,15 @@ for (const [path, title, lesson] of [
     assert.ok(
       html.includes(hadith[lesson.hadith].url),
       `Missing source link on ${path}`,
+    );
+    assert.ok(
+      html.includes(hadith[lesson.hadith].chapter),
+      `Missing narration placement on ${path}`,
+    );
+    const { attribution } = hadith[lesson.hadith];
+    assert.ok(
+      html.includes(attribution ?? 'قال رسول الله صلى الله عليه وسلم:'),
+      `Missing narration attribution on ${path}`,
     );
     assert.ok(html.includes(lesson.scenario), `Missing scenario on ${path}`);
   }

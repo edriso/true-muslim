@@ -28,8 +28,9 @@ TEST_ORIGIN=http://localhost:8787 npm run test:routes
 
 - Eighteen lessons across faith, people, family, and self-discipline. Each has evidence, three suggested actions, a scenario,
   a reflection question, examples of harm to avoid, and an important boundary.
-- Arabic RTL pages, local Cairo and Amiri Quran fonts, responsive layouts, keyboard
-  focus, skip navigation, print styles, meaningful URLs and per-lesson metadata.
+- Arabic RTL pages set in self-hosted Noto Naskh Arabic, with Reem Kufi headings and
+  Amiri Quran for revelation; responsive layouts, keyboard focus, skip navigation,
+  print styles, meaningful URLs and per-lesson metadata.
 - Server-rendered reading and navigation, with no account, analytics, or piety scoring.
 - A dedicated `/daleel` page with foundational verses, a complete lesson evidence index,
   source methodology, explicit scope limits, and a way to report errors.

@@ -8,18 +8,52 @@
   --line: #dce5de;
   --soft: #edf3ed;
   --gold: #b99a56;
-  font-family: 'Cairo Variable', sans-serif;
+  /* Naskh for reading, Kufi for headings: the pairing Arabic books use, and the
+     Qur'an keeps Amiri Quran. `serif` resolves to a system Naskh under lang=ar,
+     so the swap period never hands a Kufi face to a paragraph. */
+  --font-body: 'Noto Naskh Arabic Variable', 'Amiri', 'Geeza Pro', serif;
+  --font-display: 'Reem Kufi Variable', 'Noto Naskh Arabic Variable', 'Amiri',
+    serif;
+  --font-quran: 'Amiri Quran', 'Amiri', 'Scheherazade New', serif;
+  font-family: var(--font-body);
   color: var(--ink);
   background: var(--bg);
   font-synthesis: none;
+}
+/* Fontsource ships font-display:swap. For revelation that would render waqf and
+   other Qur'anic marks in a fallback that may not have them, so block instead. */
+@font-face {
+  font-family: 'Amiri Quran';
+  font-style: normal;
+  font-weight: 400;
+  font-display: block;
+  src: url(../node_modules/@fontsource/amiri-quran/files/amiri-quran-arabic-400-normal.woff2)
+    format('woff2');
+}
+h1,
+h2,
+h3,
+h4,
+.brand,
+.eyebrow,
+.button,
+.editorial-label,
+.method-inner strong {
+  font-family: var(--font-display);
+}
+.card-number,
+.lesson-sidebar a span,
+.source-references,
+.not-found .eyebrow {
+  font-variant-numeric: tabular-nums;
 }
 * {
   box-sizing: border-box;
 }
 body {
   margin: 0;
-  font-size: 1rem;
-  line-height: 1.9;
+  font-size: clamp(1.0625rem, 1.02rem + 0.22vw, 1.1875rem);
+  line-height: 1.95;
 }
 a {
   color: inherit;
@@ -80,7 +114,7 @@ svg {
   align-items: center;
   gap: 12px;
   font-size: 1.5rem;
-  font-weight: 750;
+  font-weight: 700;
   line-height: 1.6;
 }
 .brand-mark {
@@ -149,7 +183,7 @@ nav a:hover,
 }
 h1 {
   font-size: clamp(2.4rem, 4.5vw, 3.8rem);
-  font-weight: 750;
+  font-weight: 700;
   line-height: 1.6;
   margin-block: 18px;
 }
@@ -215,6 +249,7 @@ h1 span {
   pointer-events: none;
 }
 .ornament {
+  font-family: system-ui, sans-serif;
   color: #8a703e;
   font-size: 1.9rem;
   margin-bottom: 15px;
@@ -227,7 +262,7 @@ h1 span {
   background: var(--paper);
 }
 .quran {
-  font-family: 'Amiri Quran', serif;
+  font-family: var(--font-quran);
   font-size: 1.6rem;
   font-weight: 400;
   line-height: 2.5;

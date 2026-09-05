@@ -33,7 +33,9 @@ before changing the app or build pipeline. These rules apply to agents and human
 - Prefer server-rendered reading pages; client JavaScript only for real interactions.
 - No backend, accounts, tracking, third-party font calls, or secrets in the client.
 - Keep Arabic RTL throughout. Use logical CSS; never letter-space Arabic. Quran uses
-  Amiri Quran, normal weight, and line-height at least 2.5. Never clip diacritics.
+  Amiri Quran, normal weight, line-height at least 2.5, and font-display: block so a
+  fallback never drops a waqf mark. Never clip diacritics. Body text is Naskh
+  (Noto Naskh Arabic); Reem Kufi is for headings only. Both cap at weight 700.
 - Semantic headings, visible focus, a skip link, readable contrast, 44px controls,
   keyboard access, narrow screens, and 200% zoom are requirements.
 - Do not add packages without a concrete need. Preserve the lockfile. Document setup.

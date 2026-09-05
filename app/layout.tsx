@@ -1,5 +1,6 @@
 import type { Metadata } from 'next';
-import '@fontsource-variable/cairo';
+import '@fontsource-variable/noto-naskh-arabic/wght.css';
+import '@fontsource-variable/reem-kufi/wght.css';
 import '@fontsource/amiri-quran/arabic-400.css';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
