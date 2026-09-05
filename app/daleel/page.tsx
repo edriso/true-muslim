@@ -19,7 +19,7 @@ export const metadata: Metadata = {
 };
 export default function Daleel() {
   return (
-    <main id="main" className="container daleel">
+    <main id="main" tabIndex={-1} className="container daleel">
       <nav className="breadcrumbs" aria-label="مسار الصفحة">
         <Link href="/">الرئيسية</Link>
         <span aria-hidden="true">/</span>
@@ -137,14 +137,17 @@ export default function Daleel() {
           </li>
           <li>
             <strong>الحديث النبوي:</strong> ننقل من صفحات أحاديث محددة في{' '}
-            <a href="https://sunnah.com/">Sunnah.com</a>، ونذكر المصدر والرقم
-            والراوي والكتاب والباب، ونبيّن متى يكون النص مقتطفًا من حديث أطول.
+            <a href="https://sunnah.com/" lang="en">
+              Sunnah.com
+            </a>
+            ، ونذكر المصدر والرقم والراوي والكتاب والباب، ونبيّن متى يكون النص
+            مقتطفًا من حديث أطول.
           </li>
           <li>
             <strong>المقابلة على المطبوع:</strong> نقابل كل حديث على طبعته
             المحققة، وهي الطبعة السلطانية لصحيح البخاري وطبعة محمد فؤاد عبد
-            الباقي لصحيح مسلم، فنتأكد من اللفظ والراوي والرقم وموضع الحديث. ورابط
-            المطبوع مثبت مع كل حديث في الفهرس أعلاه.
+            الباقي لصحيح مسلم، فنتأكد من اللفظ والراوي والرقم وموضع الحديث.
+            ورابط المطبوع مثبت مع كل حديث في الفهرس أعلاه.
           </li>
           <li>
             <strong>الشرح:</strong> نعرض كلامنا منفصلًا عن الآية والحديث، ونربط

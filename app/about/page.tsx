@@ -8,7 +8,7 @@ export const metadata: Metadata = {
 };
 export default function About() {
   return (
-    <main id="main" className="container about">
+    <main id="main" tabIndex={-1} className="container about">
       <nav className="breadcrumbs" aria-label="مسار الصفحة">
         <Link href="/">الرئيسية</Link>
         <span aria-hidden="true">/</span>
@@ -53,9 +53,12 @@ export default function About() {
         </li>
         <li>
           <strong>الحديث النبوي:</strong> أحاديث من صحيح البخاري وصحيح مسلم،
-          نُقلت من صفحاتها في <a href="https://sunnah.com/">Sunnah.com</a>، ثم
-          قوبلت على طبعتها المحققة. لكل حديث مصدره ورقمه وراويه وكتابه وبابه.
-          ونبيّن بوضوح متى نورد مقتطفًا من حديث أطول.
+          نُقلت من صفحاتها في{' '}
+          <a href="https://sunnah.com/" lang="en">
+            Sunnah.com
+          </a>
+          ، ثم قوبلت على طبعتها المحققة. لكل حديث مصدره ورقمه وراويه وكتابه
+          وبابه. ونبيّن بوضوح متى نورد مقتطفًا من حديث أطول.
         </li>
         <li>
           <strong>الشرح والتطبيق:</strong> صياغة تعليمية مبسّطة من إعداد الموقع،
@@ -90,7 +93,9 @@ export default function About() {
       </p>
       <p>
         النص القرآني © مشروع تنزيل، بترخيص{' '}
-        <a href="https://tanzil.net/docs/text_license">CC BY 3.0 وشروط تنزيل</a>{' '}
+        <a href="https://tanzil.net/docs/text_license">
+          <span lang="en">CC BY 3.0</span> وشروط تنزيل
+        </a>{' '}
         التي تشترط نسبته إلى مصدره وعدم تغييره. وتفاصيل تراخيص الخطوط والشيفرة
         البرمجية في مستودع المشروع.
       </p>

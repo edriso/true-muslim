@@ -22,24 +22,27 @@ export default async function LessonPage({ params }: Props) {
   const index = lessons.findIndex((l) => l.slug === lesson.slug);
   const previous = lessons[index - 1],
     next = lessons[index + 1];
+  const narration = getHadith(lesson.hadith);
   return (
-    <main id="main" className="container reading-shell">
+    <main id="main" tabIndex={-1} className="container reading-shell">
       <aside className="lesson-sidebar">
-        <p className="eyebrow">أبواب الأخلاق</p>
-        <nav aria-label="كل الدروس">
-          {lessons.map((l) => (
-            <Link
-              key={l.slug}
-              href={`/virtues/${l.slug}`}
-              aria-current={l.slug === lesson.slug ? 'page' : undefined}
-            >
-              <span>
-                {l.order.toLocaleString('ar', { minimumIntegerDigits: 2 })}
-              </span>
-              {l.title}
-            </Link>
-          ))}
-        </nav>
+        <details className="lesson-index" open>
+          <summary>
+            <span className="eyebrow">أبواب الأخلاق</span>
+          </summary>
+          <nav aria-label="كل الدروس">
+            {lessons.map((l) => (
+              <Link
+                key={l.slug}
+                href={`/virtues/${l.slug}`}
+                aria-current={l.slug === lesson.slug ? 'page' : undefined}
+              >
+                <span>{arabicReference(String(l.order).padStart(2, '0'))}</span>
+                {l.title}
+              </Link>
+            ))}
+          </nav>
+        </details>
       </aside>
       <article>
         <nav className="breadcrumbs" aria-label="مسار الصفحة">
@@ -51,8 +54,8 @@ export default async function LessonPage({ params }: Props) {
         </nav>
         <header className="article-header">
           <p className="eyebrow">
-            {lesson.category} · الدرس {lesson.order.toLocaleString('ar')} من{' '}
-            {lessons.length.toLocaleString('ar')}
+            {lesson.category} · الدرس {arabicReference(lesson.order)} من{' '}
+            {arabicReference(lessons.length)}
           </p>
           <h1>{lesson.title}</h1>
           <p className="lead">{lesson.summary}</p>
@@ -67,8 +70,7 @@ export default async function LessonPage({ params }: Props) {
           <Ayah reference={lesson.ayah} />
           <Hadith id={lesson.hadith} />
           <p className="evidence-note">
-            موضع الحديث: {getHadith(lesson.hadith).book} ·{' '}
-            {getHadith(lesson.hadith).chapter}
+            موضع الحديث: {narration.book} · {narration.chapter}
           </p>
         </section>
         <section className="article-section avoid-box">
@@ -96,7 +98,7 @@ export default async function LessonPage({ params }: Props) {
           <p>{lesson.scenario}</p>
         </section>
         <section className="article-section boundary">
-          <strong>انتبه إلى هذا</strong>
+          <h2>انتبه إلى هذا</h2>
           <p>{lesson.boundary}</p>
           {lesson.boundaryAyah && (
             <p>

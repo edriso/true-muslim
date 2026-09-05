@@ -4,7 +4,7 @@ import { Ayah } from '@/components/content/Evidence';
 import { lessons, categories } from '@/lib/content';
 export default function Home() {
   return (
-    <main id="main">
+    <main id="main" tabIndex={-1}>
       <section className="container intro">
         <div className="intro-copy">
           <p className="eyebrow">

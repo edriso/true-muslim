@@ -6,19 +6,55 @@
   --green: #145944;
   --dark: #103e32;
   --line: #dce5de;
+  --line-strong: #748f80;
   --soft: #edf3ed;
-  --gold: #b99a56;
+  --gold: #8f7434;
+  --on-accent: #fff;
+  --focus: #8a6a1c;
+  --select-bg: #d1e7d7;
+  --select-ink: #103e32;
+  /* The dark band inverts the page, so it carries its own foreground set. */
+  --band-bg: #103e32;
+  --band-ink: #fff;
+  --band-soft: #d5e1d9;
+  --band-accent: #d4c18c;
+  --band-link-hover: #a8d9be;
+  color-scheme: light;
   /* Naskh for reading, Kufi for headings: the pairing Arabic books use, and the
      Qur'an keeps Amiri Quran. `serif` resolves to a system Naskh under lang=ar,
      so the swap period never hands a Kufi face to a paragraph. */
   --font-body: 'Noto Naskh Arabic Variable', 'Amiri', 'Geeza Pro', serif;
-  --font-display: 'Reem Kufi Variable', 'Noto Naskh Arabic Variable', 'Amiri',
-    serif;
+  --font-display:
+    'Reem Kufi Variable', 'Noto Naskh Arabic Variable', 'Amiri', serif;
   --font-quran: 'Amiri Quran', 'Amiri', 'Scheherazade New', serif;
   font-family: var(--font-body);
   color: var(--ink);
   background: var(--bg);
   font-synthesis: none;
+}
+@media (prefers-color-scheme: dark) {
+  :root {
+    color-scheme: dark;
+    --bg: #0e1614;
+    --paper: #141f1c;
+    --ink: #e6efe9;
+    --muted: #a3b5ad;
+    --green: #7fc9a5;
+    --dark: #0a100f;
+    --line: #2a3a34;
+    --line-strong: #617a6f;
+    --soft: #1b2825;
+    --gold: #d9bd7e;
+    --on-accent: #0a100f;
+    --focus: #e0b34f;
+    --select-bg: #1f4a38;
+    --select-ink: #e6efe9;
+    --band-bg: #0a100f;
+    --band-ink: #e6efe9;
+    --band-soft: #c7d6ce;
+    --band-accent: #d9bd7e;
+    --band-link-hover: #7fc9a5;
+  }
 }
 /* Fontsource ships font-display:swap. For revelation that would render waqf and
    other Qur'anic marks in a fallback that may not have them, so block instead. */
@@ -63,12 +99,17 @@ a,
 button {
   -webkit-tap-highlight-color: transparent;
 }
-a:focus-visible,
-button:focus-visible,
-summary:focus-visible {
-  outline: 3px solid #a17520;
-  outline-offset: 5px;
-  border-radius: 3px;
+:where(a, button, summary, input, select, textarea, [tabindex]):focus-visible {
+  outline: 3px solid var(--focus);
+  outline-offset: 4px;
+}
+.closing,
+.skip-link {
+  --focus: #f0d38a;
+}
+main:focus,
+main:focus-visible {
+  outline: none;
 }
 button,
 input {
@@ -86,13 +127,15 @@ h1,
 h2,
 h3,
 h4 {
-  line-height: 1.6;
+  line-height: 1.5;
+  text-wrap: balance;
 }
 svg {
   flex-shrink: 0;
 }
 ::selection {
-  background: #d1e7d7;
+  background: var(--select-bg);
+  color: var(--select-ink);
 }
 .container {
   width: min(1120px, calc(100% - 64px));
@@ -128,7 +171,7 @@ svg {
 }
 .brand-sub {
   display: block;
-  font-size: 0.78rem;
+  font-size: 0.85rem;
   font-weight: 400;
   color: var(--muted);
 }
@@ -151,11 +194,11 @@ nav a:hover,
 .skip-link {
   position: fixed;
   z-index: 50;
-  top: 8px;
-  inset-inline-start: 8px;
+  top: 12px;
+  inset-inline-start: 12px;
   padding: 10px 20px;
-  background: var(--dark);
-  color: #fff;
+  background: var(--band-bg);
+  color: var(--band-ink);
   transform: translateY(-150%);
 }
 .skip-link:focus {
@@ -182,7 +225,7 @@ nav a:hover,
   background: var(--green);
 }
 h1 {
-  font-size: clamp(2.4rem, 4.5vw, 3.8rem);
+  font-size: clamp(2rem, 1.4rem + 3.2vw, 3.5rem);
   font-weight: 700;
   line-height: 1.6;
   margin-block: 18px;
@@ -191,7 +234,7 @@ h1 span {
   color: var(--green);
 }
 .lead {
-  font-size: 1.09rem;
+  font-size: 1.2rem;
   max-width: 480px;
   color: var(--muted);
   line-height: 2;
@@ -214,7 +257,7 @@ h1 span {
 }
 .primary {
   background: var(--green);
-  color: white;
+  color: var(--on-accent);
 }
 .primary:hover {
   background: var(--dark);
@@ -235,7 +278,7 @@ h1 span {
 .intro-verse {
   position: relative;
   text-align: center;
-  border: 1px solid #bfd0c2;
+  border: 1px solid var(--line-strong);
   border-radius: 130px 130px 12px 12px;
   padding: 42px 24px 28px;
   background: var(--soft);
@@ -244,13 +287,13 @@ h1 span {
   content: '';
   position: absolute;
   inset: 9px;
-  border: 1px solid #d1ddd2;
+  border: 1px solid var(--line);
   border-radius: 122px 122px 7px 7px;
   pointer-events: none;
 }
 .ornament {
   font-family: system-ui, sans-serif;
-  color: #8a703e;
+  color: var(--gold);
   font-size: 1.9rem;
   margin-bottom: 15px;
 }
@@ -263,11 +306,12 @@ h1 span {
 }
 .quran {
   font-family: var(--font-quran);
-  font-size: 1.6rem;
+  font-size: clamp(1.35rem, 1rem + 1.5vw, 1.7rem);
   font-weight: 400;
-  line-height: 2.5;
-  margin: 14px 0;
-  overflow-wrap: anywhere;
+  line-height: 2.6;
+  margin-block: 14px;
+  overflow-wrap: normal;
+  word-break: keep-all;
 }
 .compact {
   padding: 0;
@@ -303,7 +347,7 @@ h1 span {
   font-size: 0.9rem;
   margin-top: 16px;
   padding-top: 20px;
-  border-top: 1px solid #cedbcf;
+  border-top: 1px solid var(--line);
 }
 .method-strip {
   border-block: 1px solid var(--line);
@@ -407,7 +451,7 @@ h1 span {
   display: flex;
   align-items: center;
   gap: 18px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: 9px;
   padding: 23px 20px;
   transition:
@@ -415,8 +459,8 @@ h1 span {
     background 0.16s;
 }
 .virtue-card:hover {
-  background: #f3f7f1;
-  border-color: #83a28c;
+  background: var(--soft);
+  border-color: var(--green);
 }
 .card-number {
   color: var(--muted);
@@ -438,8 +482,8 @@ h1 span {
   color: var(--green);
 }
 .closing {
-  background: var(--dark);
-  color: #fff;
+  background: var(--band-bg);
+  color: var(--band-ink);
 }
 .closing-inner {
   max-width: 790px;
@@ -447,7 +491,7 @@ h1 span {
   padding-block: 50px;
 }
 .closing .eyebrow {
-  color: #d4c18c;
+  color: var(--band-accent);
   justify-content: center;
 }
 .closing h2 {
@@ -455,12 +499,15 @@ h1 span {
   margin-block: 10px 14px;
 }
 .closing p {
-  color: #d5e1d9;
+  color: var(--band-soft);
   line-height: 2;
 }
 .closing .text-link {
-  color: #fff;
+  color: var(--band-ink);
   margin-top: 18px;
+}
+.closing .text-link:hover {
+  color: var(--band-link-hover);
 }
 .site-footer {
   background: var(--paper);
@@ -498,7 +545,7 @@ h1 span {
 }
 .reading-shell {
   display: grid;
-  grid-template-columns: 210px minmax(0, 750px);
+  grid-template-columns: 210px minmax(0, 70ch);
   gap: 60px;
   align-items: start;
   padding-block: 34px 70px;
@@ -506,9 +553,29 @@ h1 span {
 .lesson-sidebar {
   position: sticky;
   top: 25px;
+  max-height: calc(100svh - 50px);
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  padding: 9px;
+  margin: -9px;
 }
 .lesson-sidebar .eyebrow {
   margin-bottom: 15px;
+}
+.lesson-index > summary {
+  list-style: none;
+  cursor: pointer;
+}
+.lesson-index > summary::-webkit-details-marker {
+  display: none;
+}
+@media (min-width: 621px) {
+  /* Wide screens have room for the whole index, so the toggle is not needed. */
+  .lesson-index > summary {
+    cursor: default;
+    pointer-events: none;
+  }
 }
 .lesson-sidebar nav {
   flex-direction: column;
@@ -549,7 +616,7 @@ h1 span {
   margin-bottom: 30px;
 }
 .article-header h1 {
-  font-size: 2.8rem;
+  font-size: clamp(1.9rem, 1.4rem + 2.4vw, 2.6rem);
   margin-block: 8px;
 }
 .article-header .lead {
@@ -563,7 +630,6 @@ h1 span {
   margin-bottom: 12px;
 }
 .article-section p {
-  color: var(--muted);
   line-height: 2.1;
 }
 .hadith blockquote {
@@ -581,8 +647,12 @@ h1 span {
   border-radius: 10px;
   padding: 26px 30px;
 }
-.practice-box ol {
+.practice-box ol,
+.methodology-list {
+  list-style-type: arabic-indic;
   padding-inline-start: 24px;
+}
+.practice-box ol {
   margin-block: 18px 0;
 }
 .practice-box li {
@@ -600,16 +670,18 @@ h1 span {
 .boundary {
   padding: 20px 24px;
   background: var(--paper);
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: 8px;
   font-size: 0.95rem;
 }
-.boundary strong {
-  display: block;
+.boundary h2 {
+  font-size: 1rem;
+  font-weight: 700;
   margin-bottom: 4px;
 }
 .lesson-nav {
   display: flex;
+  flex-wrap: wrap;
   justify-content: space-between;
   gap: 20px;
   border-top: 1px solid var(--line);
@@ -642,16 +714,13 @@ h1 span {
   padding-block: 35px 70px;
 }
 .about h1 {
-  font-size: 2.7rem;
+  font-size: clamp(1.85rem, 1.4rem + 2.2vw, 2.5rem);
 }
 .about h2 {
   font-size: 1.45rem;
   margin-block: 30px 12px;
 }
-.about p,
-.about li {
-  color: var(--muted);
-}
+
 .about a:not(.button) {
   text-decoration: underline;
   text-underline-offset: 5px;
@@ -663,7 +732,7 @@ h1 span {
   margin-block: 10px;
 }
 .not-found {
-  min-height: 55vh;
+  min-height: 55svh;
   text-align: center;
   padding-block: 80px;
 }
@@ -722,7 +791,7 @@ h1 span {
     height: 36px;
   }
   .brand-sub {
-    font-size: 0.72rem;
+    font-size: 0.8rem;
   }
   .header-inner nav {
     gap: 14px;
@@ -735,11 +804,8 @@ h1 span {
     gap: 35px;
     padding-block: 36px;
   }
-  .intro h1 {
-    font-size: 2.65rem;
-  }
   .lead {
-    font-size: 1rem;
+    font-size: 1.08rem;
   }
   .intro-verse {
     max-width: 420px;
@@ -834,10 +900,38 @@ h1 span {
     padding-top: 18px;
   }
   .lesson-sidebar {
-    display: none;
+    position: static;
+    max-height: none;
+    overflow: visible;
+    margin: 0 0 24px;
+    padding: 0;
   }
-  .article-header h1 {
-    font-size: 2.4rem;
+  .lesson-index > summary {
+    display: flex;
+    align-items: center;
+    min-height: 44px;
+    gap: 8px;
+    border: 1px solid var(--line-strong);
+    border-radius: 8px;
+    padding-inline: 16px;
+    background: var(--paper);
+  }
+  .lesson-index > summary::after {
+    content: '⌄';
+    margin-inline-start: auto;
+    color: var(--green);
+  }
+  .lesson-index[open] > summary {
+    margin-bottom: 10px;
+  }
+  .lesson-index > summary .eyebrow {
+    margin-bottom: 0;
+  }
+  .lesson-index > nav {
+    max-height: 40svh;
+    overflow-y: auto;
+    overscroll-behavior: contain;
+    padding: 4px;
   }
   .evidence {
     padding: 20px;
@@ -848,9 +942,6 @@ h1 span {
   .practice-box {
     padding: 22px;
   }
-  .about h1 {
-    font-size: 2.1rem;
-  }
 }
 @media (prefers-reduced-motion: reduce) {
   * {
@@ -859,30 +950,80 @@ h1 span {
   }
 }
 @media print {
+  @page {
+    margin: 18mm 16mm;
+  }
+  :root {
+    --ink: #000;
+    --muted: #333;
+    --green: #000;
+    --line: #999;
+    --line-strong: #666;
+  }
+  body {
+    background: #fff;
+    font-size: 11pt;
+  }
   .site-header,
   .site-footer,
   .lesson-sidebar,
   .lesson-nav,
-  .skip-link {
-    display: none;
+  .skip-link,
+  .category-nav,
+  .intro-actions,
+  .button {
+    display: none !important;
   }
-  .reading-shell {
+  .reading-shell,
+  .about,
+  .daleel {
     display: block;
+    max-width: none;
   }
   .container {
     width: 100%;
   }
+  .closing,
+  .closing * {
+    background: #fff !important;
+    color: #000 !important;
+  }
+  .practice-box,
+  .limits-panel,
+  .avoid-box,
+  .boundary,
+  .evidence {
+    background: #fff;
+    border: 1pt solid #999;
+  }
   .evidence,
-  .practice-box {
+  .practice-box,
+  .article-section,
+  figure,
+  li {
     break-inside: avoid;
   }
-  .evidence figcaption a:after {
-    content: ' (' attr(href) ')';
-    font-size: 10pt;
+  h1,
+  h2,
+  h3,
+  h4 {
+    break-after: avoid;
   }
-  .closing {
-    background: white;
-    color: black;
+  p {
+    orphans: 3;
+    widows: 3;
+  }
+  .quran {
+    font-size: 16pt;
+    line-height: 2.6;
+  }
+  a[href^='http']:after {
+    /* U+200E keeps the URL and its brackets running LTR inside RTL prose. */
+    content: '\200E (' attr(href) ')';
+    font-size: 9pt;
+    color: #444;
+    direction: ltr;
+    unicode-bidi: isolate;
   }
 }
 
@@ -902,9 +1043,6 @@ h1 span {
 .daleel h3 {
   font-size: 1.2rem;
   margin-bottom: 12px;
-}
-.daleel p {
-  color: var(--muted);
 }
 .daleel .eyebrow {
   color: var(--green);
@@ -935,7 +1073,7 @@ h1 span {
   list-style: none;
   padding: 0;
   margin: 0;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: 10px;
   background: var(--paper);
 }
@@ -1002,7 +1140,6 @@ h1 span {
   text-decoration-style: dotted;
   text-underline-offset: 5px;
 }
-.methodology-list,
 .limits-panel ul {
   padding-inline-start: 24px;
 }
@@ -1050,19 +1187,12 @@ h1 span {
 }
 .avoid-box {
   padding: 22px 26px;
-  border: 1px solid var(--line);
+  border: 1px solid var(--line-strong);
   border-radius: 8px;
 }
 .avoid-box ul {
   margin-block: 10px 0;
   padding-inline-start: 24px;
-  color: var(--muted);
-}
-.lesson-sidebar {
-  max-height: calc(100svh - 50px);
-  overflow-y: auto;
-  scrollbar-width: thin;
-  padding: 5px;
 }
 @media (max-width: 620px) {
   .header-inner {
@@ -1073,7 +1203,8 @@ h1 span {
   .header-inner nav {
     width: 100%;
     justify-content: space-between;
-    gap: 8px;
+    flex-wrap: wrap;
+    gap: 8px 12px;
   }
   .header-inner nav a {
     font-size: 0.9rem;

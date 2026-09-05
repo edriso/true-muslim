@@ -1,7 +1,7 @@
 import Link from 'next/link';
 export default function NotFound() {
   return (
-    <main id="main" className="container not-found">
+    <main id="main" tabIndex={-1} className="container not-found">
       <p className="eyebrow">٤٠٤</p>
       <h1>الصفحة غير موجودة</h1>
       <p>
