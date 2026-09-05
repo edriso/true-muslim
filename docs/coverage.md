@@ -1,45 +1,51 @@
 # Coverage and source review
 
-This is an introductory character guide, not an encyclopedia of Islam or a fatwa
-service. The expanded collection is deliberately organized around four relationships.
+This is an introductory character guide, not an encyclopedia of Islam and not a fatwa
+service. The collection is organised around four relationships rather than around a
+list of virtues, so that a reader can find the lesson by the situation they are in.
 
 | Relationship | Lessons                                                                  | Practical coverage                                                                                                 |
 | ------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| With Allah   | Sincerity, gratitude, repentance                                         | Intention, recognizing blessings, stopping and repairing mistakes                                                  |
+| With Allah   | Sincerity, gratitude, repentance                                         | Intention, recognising blessings, stopping and repairing a mistake                                                 |
 | With people  | Honesty, trust, justice, ihsan, mercy, gentleness, generosity, neighbors | Truth, money/responsibilities/secrets, fairness, careful work, kindness, giving without humiliation, shared spaces |
-| With family  | Parents, kinship                                                         | Good companionship, listening, maintaining appropriate contact                                                     |
-| With oneself | Speech, patience, forgiveness, humility, modesty                         | Messages and gossip, anger, rights and boundaries, accepting correction, dignified conduct                         |
+| With family  | Parents, kinship                                                         | Good companionship, listening, keeping contact that is safe to keep                                                |
+| With oneself | Speech, patience, forgiveness, humility, modesty                         | Messages and gossip, anger, rights and boundaries, accepting correction, dignified conduct                        |
 
 An-Nahl 16:90 frames doing good and avoiding wrongdoing. An-Nisa 4:58 anchors
 responsibility and fairness. Neither verse is paraphrased inside a quotation; the
-full pinned text is displayed separately from the short editorial summary.
+pinned text is displayed in full, separately from the short editorial summary.
 
-## Added narration sources inspected on 2026-09-05
+## How a narration earns its place
 
-| Topic       | Primary source                  | Quote handling                                                                 |
-| ----------- | ------------------------------- | ------------------------------------------------------------------------------ |
-| Ihsan       | https://sunnah.com/muslim:1955a | Excerpt of a general principle; full narration continues with humane slaughter |
-| Kinship     | https://sunnah.com/bukhari:5991 | Complete prophetic statement                                                   |
-| Neighbors   | https://sunnah.com/bukhari:6014 | Complete prophetic statement                                                   |
-| Generosity  | https://sunnah.com/bukhari:1417 | Complete short prophetic statement                                             |
-| Forgiveness | https://sunnah.com/muslim:2588  | Excerpt; same narration also supports humility                                 |
-| Gratitude   | https://sunnah.com/muslim:2734a | Complete prophetic statement                                                   |
-| Modesty     | https://sunnah.com/bukhari:6117 | Labelled excerpt because the surrounding report includes a later dialogue      |
-| Repentance  | https://sunnah.com/muslim:2702b | Excerpt; narrator follows the Arabic isnad: al-Agharr narrates to Ibn Umar     |
+Each record in `data/hadith.json` names two sources: the Sunnah.com page a reader can
+open, and the printed critical edition the wording was collated against — al-Tab'a
+al-Sultaniyya for al-Bukhari, Muhammad Fu'ad Abd al-Baqi's edition for Muslim. The
+recorded كتاب and باب come from the printed page, not from memory. `npm run
+verify:sources` re-runs the whole collation, including asking Shamela to resolve each
+printed number back to the page id stored in the record.
 
-`data/hadith.json` contains the exact Arabic excerpts, narrator names, collection
-numbers, and date. Only its digest changes when the eight inspected records are added;
-the two Qur'an corpus/metadata digests remain unchanged. Original hadith records are
-retained verbatim. New Quran references are resolved from the unchanged pinned corpus.
+Excerpting is allowed and is labelled, but an excerpt has to read correctly on its own.
+Where a narration is a dialogue rather than a statement — Bukhari 527, where the
+Prophet's answer begins with ثُمَّ — the record carries an `attribution` naming the
+Companion who asked, so the quotation is never presented as a sentence it is not.
 
 ## Deliberate boundaries
 
-- Charity is not a substitute for learning zakat or obligatory maintenance.
-- Modesty is not a comprehensive guide to dress rulings and must not prevent asking
-  needed religious questions (Bukhari 130).
+- Charity here is voluntary sadaqa; it is not a substitute for learning zakat or the
+  maintenance a person owes.
+- Modesty is not a guide to rulings on dress, and must never stop someone asking a
+  religious question they need answered (Bukhari 130).
 - Forgiveness does not remove a wronged person's right to seek justice (42:41).
-- Justice and kindness are not reserved only for people who share one's religion (60:8).
-- Kinship and patience do not require remaining in danger.
-- Repentance includes regret and leaving the sin; rights-related cases may need a scholar.
-- The site does not settle disputes in jurisprudence, evaluate anyone's faith, or certify
-  that anyone has achieved good character by reading the lessons.
+- Justice and kindness are not reserved for people who share one's religion (60:8).
+- Kinship and patience never require staying in danger.
+- Repentance includes regret and leaving the sin; cases involving other people's rights
+  may need a scholar.
+- The site does not settle disputed questions of fiqh, evaluate anyone's faith, or
+  suggest that reading the lessons has achieved anything.
+
+## What is deliberately not here
+
+Detailed rulings, a curriculum of worship, biography, creed beyond what the lessons
+state plainly, and any topic where an introductory page would do more harm than
+silence. Where a reader's situation needs a judgement rather than a principle, every
+lesson points them to people who can give one.
