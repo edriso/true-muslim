@@ -7,7 +7,7 @@ export function Footer() {
           <Link href="/" className="footer-brand">
             مسلم بحق
           </Link>
-          <p>دعوة لإصلاح النفس، لا حكم على إيمان أحد.</p>
+          <p>دعوة إلى إصلاح النفس، لا حكم على إيمان أحد.</p>
         </div>
         <div className="footer-links">
           <Link href="/daleel">الدليل والمصادر</Link>

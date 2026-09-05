@@ -76,6 +76,8 @@ test('narrations that open mid-sentence carry their own attribution', () => {
 });
 test('surah names are displayed with hamzat al-qat where the source omits it', () => {
   buildContent();
-  const quran = JSON.parse(readFileSync('content/quran.generated.json', 'utf8'));
+  const quran = JSON.parse(
+    readFileSync('content/quran.generated.json', 'utf8'),
+  );
   assert.equal(quran['14:7'].surahName, 'إبراهيم');
 });

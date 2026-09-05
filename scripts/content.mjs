@@ -126,8 +126,16 @@ export function buildContent() {
       HONORIFICS.includes(record.honorific),
       'Companion honorific must be one of the accepted forms',
     );
-    assert.match(record.book, /^كتاب /u, 'Book must name a كتاب of the collection');
-    assert.match(record.chapter, /^باب /u, 'Chapter must name a باب of the collection');
+    assert.match(
+      record.book,
+      /^كتاب /u,
+      'Book must name a كتاب of the collection',
+    );
+    assert.match(
+      record.chapter,
+      /^باب /u,
+      'Chapter must name a باب of the collection',
+    );
     // The printed critical edition is the wording check behind the reader-facing link.
     const printed = EDITIONS[record.collection];
     assert.equal(record.edition, printed.name, 'Unexpected printed edition');

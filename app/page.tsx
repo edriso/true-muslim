@@ -11,12 +11,12 @@ export default function Home() {
             <span className="small-line" /> رحلة في أخلاق الإسلام
           </p>
           <h1>
-            جمال الإسلام،
+            جمال الإسلام
             <br />
             <span>يظهر في أخلاقنا.</span>
           </h1>
           <p className="lead">
-            نتعلّم ما يحبّه الله من الأخلاق، ونجتهد أن نعيشه في كلماتنا، ومواقفنا،
+            نتعلّم ما يحبّه الله من الأخلاق، ونجتهد في أن نعيشه في كلماتنا ومواقفنا
             ومعاملتنا للناس.
           </p>
           <div className="intro-actions">
@@ -75,7 +75,7 @@ export default function Home() {
           <p>
             {lessons.length.toLocaleString('ar')} بابًا للخير.
             <br />
-            ابدأ بما تحتاج إليه، وعد متى شئت.
+            ابدأ بما تحتاج إليه، وعُدْ متى شئت.
           </p>
         </div>
         <nav className="category-nav" aria-label="أقسام الأخلاق">
