@@ -968,6 +968,11 @@ h1 span {
     font-size: 1.5rem;
   }
 }
+@media (prefers-reduced-motion: no-preference) {
+  html {
+    scroll-behavior: smooth;
+  }
+}
 @media (prefers-reduced-motion: reduce) {
   * {
     transition: none !important;
