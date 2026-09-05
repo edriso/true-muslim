@@ -4,7 +4,7 @@ import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
 import { lessons, getLesson, getAyah, getHadith } from '@/lib/content';
 import { Ayah, Hadith } from '@/components/content/Evidence';
-import { arabicReference } from '@/lib/format';
+import { arabicOrdinal, arabicReference } from '@/lib/format';
 type Props = { params: Promise<{ slug: string }> };
 export function generateStaticParams() {
   return lessons.map(({ slug }) => ({ slug }));
@@ -37,7 +37,7 @@ export default async function LessonPage({ params }: Props) {
                 href={`/virtues/${l.slug}`}
                 aria-current={l.slug === lesson.slug ? 'page' : undefined}
               >
-                <span>{arabicReference(String(l.order).padStart(2, '0'))}</span>
+                <span>{arabicOrdinal(l.order)}</span>
                 {l.title}
               </Link>
             ))}

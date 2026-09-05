@@ -81,3 +81,9 @@ test('surah names are displayed with hamzat al-qat where the source omits it', (
   );
   assert.equal(quran['14:7'].surahName, 'إبراهيم');
 });
+test('ordinals use Arabic-Indic digits without depending on runtime locale data', async () => {
+  const { arabicOrdinal, arabicReference } = await import('../lib/format.ts');
+  assert.equal(arabicOrdinal(1), '٠١');
+  assert.equal(arabicOrdinal(26), '٢٦');
+  assert.equal(arabicReference('1955a'), '١٩٥٥a');
+});

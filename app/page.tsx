@@ -2,6 +2,7 @@ import Link from 'next/link';
 import { ArrowLeft, BookOpen, HeartHandshake, Sprout } from 'lucide-react';
 import { Ayah } from '@/components/content/Evidence';
 import { lessons, categories } from '@/lib/content';
+import { arabicOrdinal, arabicReference } from '@/lib/format';
 export default function Home() {
   return (
     <main id="main" tabIndex={-1}>
@@ -73,7 +74,7 @@ export default function Home() {
             <h2>أخلاق نتعلّمها ونعيشها</h2>
           </div>
           <p>
-            {lessons.length.toLocaleString('ar')} بابًا للخير.
+            {arabicReference(lessons.length)} بابًا للخير.
             <br />
             ابدأ بما تحتاج إليه، وعُدْ متى شئت.
           </p>
@@ -93,9 +94,7 @@ export default function Home() {
             aria-labelledby={`heading-${index}`}
           >
             <div className="group-label">
-              <span>
-                {(index + 1).toLocaleString('ar', { minimumIntegerDigits: 2 })}
-              </span>
+              <span>{arabicOrdinal(index + 1)}</span>
               <h3 id={`heading-${index}`}>{category}</h3>
             </div>
             <div className="card-grid">
@@ -108,9 +107,7 @@ export default function Home() {
                     key={lesson.slug}
                   >
                     <span className="card-number">
-                      {lesson.order.toLocaleString('ar', {
-                        minimumIntegerDigits: 2,
-                      })}
+                      {arabicOrdinal(lesson.order)}
                     </span>
                     <div>
                       <h4>{lesson.title}</h4>
