@@ -1,19 +1,24 @@
 # Coverage and source review
 
 This is an introductory character guide, not an encyclopedia of Islam and not a fatwa
-service. The collection is organised around four relationships rather than around a
+service. The collection is organised around five relationships rather than around a
 list of virtues, so that a reader can find the lesson by the situation they are in.
 
-| Relationship | Lessons                                                                  | Practical coverage                                                                                                 |
-| ------------ | ------------------------------------------------------------------------ | ------------------------------------------------------------------------------------------------------------------ |
-| With Allah   | Sincerity, gratitude, repentance                                         | Intention, recognising blessings, stopping and repairing a mistake                                                 |
-| With people  | Honesty, trust, justice, ihsan, mercy, gentleness, generosity, neighbors | Truth, money/responsibilities/secrets, fairness, careful work, kindness, giving without humiliation, shared spaces |
-| With family  | Parents, kinship                                                         | Good companionship, listening, keeping contact that is safe to keep                                                |
-| With oneself | Speech, patience, forgiveness, humility, modesty                         | Messages and gossip, anger, rights and boundaries, accepting correction, dignified conduct                        |
+| Relationship  | Lessons                                                                                                      | Practical coverage                                                                                                        |
+| ------------- | ------------------------------------------------------------------------------------------------------------ | --------------------------------------------------------------------------------------------------------------------------- |
+| With Allah    | Sincerity, gratitude, repentance                                                                             | Intention, recognising blessings, stopping and repairing a mistake                                                        |
+| With people   | Honesty, trust, promises, justice, ihsan, mercy, gentleness, generosity, greeting, neighbors, permission, roads | Truth, responsibilities and secrets, keeping your word, fairness, careful work, kindness, giving without humiliation, the five duties owed to a fellow Muslim, shared walls, privacy and consent, public space |
+| With family   | Parents, kinship, children                                                                                   | Good companionship, listening, keeping contact that is safe to keep, patience with those younger than you                 |
+| With oneself  | Speech, patience, forgiveness, envy, humility, modesty                                                       | Messages and gossip, anger, rights and boundaries, comparison, accepting correction, dignified conduct                    |
+| With the world | Animals, moderation                                                                                         | Kindness to what cannot ask, using a provision without wasting it                                                         |
 
-An-Nahl 16:90 frames doing good and avoiding wrongdoing. An-Nisa 4:58 anchors
-responsibility and fairness. Neither verse is paraphrased inside a quotation; the
-pinned text is displayed in full, separately from the short editorial summary.
+Three foundation verses frame the whole collection. An-Nahl 16:90 pairs doing good
+with avoiding wrongdoing. An-Nisa 4:58 anchors responsibility and fairness.
+Al-Baqarah 2:177 is the Qur'an's own definition of البر, and it is the reason the site
+never presents character as a substitute for worship: the same verse lists belief,
+prayer, zakat, keeping one's word and patience together. No verse is paraphrased
+inside a quotation; the pinned text is displayed in full, separately from the short
+editorial summary.
 
 ## How a narration earns its place
 

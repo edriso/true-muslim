@@ -108,3 +108,40 @@ upstream spellings that omit hamzat al-qat' (ابراهيم، الانسان، �
 hamzat al-wasl as qat' (الإنفطار، الإنشقاق). `scripts/content.mjs` corrects only how
 those names are displayed, through `SURAH_NAME_FIXES`. Never edit the pinned file to
 fix a spelling; add the display correction and keep the digest unchanged.
+
+## Narrations that look permitted but are not
+
+Each of these circulates widely in Arabic character material and would fail the
+Bukhari/Muslim-only rule. All were checked negatively against the full text of both
+Sahihs before being listed here.
+
+- `إن الله يحب إذا عمل أحدكم عملا أن يتقنه` — the usual proof text for إتقان العمل.
+  In Abu Ya'la 4386, al-Tabarani's al-Awsat 897 and al-Bayhaqi's Shu'ab 4929-4931.
+  Its grading is disputed, not agreed: every chain runs through Mus'ab b. Thabit.
+  Do not use it, and do not call it sahih.
+- `تبسمك في وجه أخيك صدقة` — **it is in al-Adab al-Mufrad 891, which is al-Bukhari's
+  other book, not the Sahih.** A takhrij line reading "البخاري" here is a trap. Also
+  Tirmidhi 1956 and Ibn Hibban 474. If the virtue is wanted, use Muslim 2626's own
+  wording (`ولو أن تلقى أخاك بوجه طلق`) — the two are separate narrations that share
+  only their Companion, so moving the first wording onto the second number is a real
+  misattribution, not a paraphrase.
+- `خيركم خيركم لأهله` — not in either Sahih and not in al-Adab al-Mufrad either.
+  Cite Tirmidhi 3895 if it is ever needed elsewhere; never al-Bukhari.
+- `المسلمون على شروطهم` — al-Bukhari carries it only mu'allaqan. A ta'liq is not a
+  narration you may cite with a number.
+- `على شرط البخاري` / `على شرط الشيخين` means *meets their criteria*, never
+  *narrated by them*. This confusion is the commonest source of a false attribution.
+
+## Numbering traps inside the two Sahihs
+
+- Bukhari 3186 is printed as a merged entry `٣١٨٦ - ٣١٨٧`. Prefer 3188 for a clean
+  single-number citation of the same meaning.
+- Muslim 2558/2559: the printed page numbers the narration and its own muta'aba
+  differently, so one is a transcription slip. Cite Bukhari 6065 instead.
+- Muslim 1468 is the dila' narration; 1469 is `لا يفرك مؤمن مؤمنة`. A Sunnah.com-derived
+  dataset indexes the latter as `1468b`, which contradicts the print. Inspect the site
+  directly before writing a record for it.
+- Muslim 1054 is `قد أفلح من أسلم ورزق كفافا`; 1051 is a different hadith. The 1051
+  citation is widespread and wrong.
+- Bukhari 2465 and 6229 both carry the haqq al-tariq narration in different wordings.
+  Do not attach one's wording to the other's number.

@@ -30,8 +30,9 @@ run it whenever a narration is added or its wording changes.
 
 ## What is included
 
-- Eighteen lessons across faith, people, family, and self-discipline. Each has evidence, three suggested actions, a scenario,
-  a reflection question, examples of harm to avoid, and an important boundary.
+- Twenty-six lessons across five relationships: with Allah, with people, with family,
+  with oneself, and with the world around us. Each has evidence, three suggested
+  actions, a scenario, a reflection question, examples of harm to avoid, and a boundary.
 - Arabic RTL pages set in self-hosted Noto Naskh Arabic, with Reem Kufi headings and
   Amiri Quran for revelation; responsive layouts, keyboard focus, skip navigation,
   print styles, meaningful URLs and per-lesson metadata.

@@ -1,20 +1,47 @@
 {
-  "categories": ["مع الله", "مع الناس", "مع الأهل", "مع النفس"],
+  "categories": [
+    "مع الله",
+    "مع الناس",
+    "مع الأهل",
+    "مع النفس",
+    "مع ما حولنا"
+  ],
   "foundations": [
     {
       "reference": "16:90",
       "title": "عدل وإحسان، وبُعد عن الظلم",
       "summary": "تجمع الآية الأمر بالعدل والإحسان وإعطاء الأقارب حقهم، والنهي عن الفحشاء والمنكر والاعتداء على الناس. نتعلّم منها أن حسن الخُلُق فعل للخير وترك للأذى.",
       "tafsir": "https://quran.ksu.edu.sa/tafseer/saadi/sura16-aya90.html",
-      "lessons": ["justice", "excellence", "kinship"]
+      "lessons": [
+        "justice",
+        "excellence",
+        "kinship"
+      ]
     },
     {
       "reference": "4:58",
       "title": "أمانة تُؤدّى، وحقٌّ لا يضيع",
       "summary": "تأمر الآية بأداء الأمانات إلى أهلها، وبالعدل عند الحكم بين الناس. نبدأ بما في أيدينا من حقوق ومسؤوليات، وننصف من نحب ومن نختلف معه.",
       "tafsir": "https://quran.ksu.edu.sa/tafseer/saadi/sura4-aya58.html",
-      "lessons": ["trust", "justice"]
+      "lessons": [
+        "trust",
+        "justice"
+      ]
+    },
+    {
+      "reference": "2:177",
+      "title": "البِرّ إيمان وعمل",
+      "summary": "تجمع الآية الإيمان بالله واليوم الآخر، وإيتاء المال على حبّه، وإقام الصلاة وإيتاء الزكاة، والوفاء بالعهد، والصبر عند الشدّة. فالبِرّ ليس مظهرًا ولا شعارًا، بل إيمان في القلب وعمل في الجوارح.",
+      "tafsir": "https://quran.ksu.edu.sa/tafseer/saadi/sura2-aya177.html",
+      "lessons": [
+        "promises",
+        "generosity",
+        "patience"
+      ]
     }
   ],
-  "pageReferences": ["68:4", "2:285"]
+  "pageReferences": [
+    "68:4",
+    "2:285"
+  ]
 }

@@ -4,7 +4,7 @@
 
 An Arabic reading guide for most ages: choose a virtue, understand it, inspect its
 source, and try an everyday action. No login, spirituality scores, or intrusive UI.
-Eighteen short lessons form an introductory collection, not an exhaustive account of Islam.
+Twenty-six short lessons form an introductory collection, not an exhaustive account of Islam.
 
 ## Structure
 
@@ -27,7 +27,7 @@ once the page has loaded; this is not a service-worker offline app.
 ## Milestones
 
 1. Record editorial rules, source provenance, and project layout.
-2. Build the reading experience and eighteen sourced lessons.
+2. Build the reading experience and twenty-six sourced lessons.
 3. Enforce corpus, source record, and lesson validation; type-check and build.
 4. Prepare deployment and document verification limitations.
 

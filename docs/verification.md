@@ -10,35 +10,38 @@ checks are now repeatable rather than a one-time claim.
   Tanzil Uthmani 1.1 copyright block. `data/surah-names.json` matches upstream too
   (`956eb52f…787439`). Neither file is edited; the four surah names whose upstream
   spelling drops hamzat al-qat' are corrected at display time only.
-- All 24 referenced verses resolve from that corpus and were read against the virtue
+- All 33 referenced verses resolve from that corpus and were read against the virtue
   they support, including the four supplementary boundary verses (31:15, 4:148, 42:41,
-  60:8) and the two foundation verses.
-- All 18 narrations were collated against the printed critical editions —
+  60:8) and the three foundation verses.
+- All 26 narrations were collated against the printed critical editions —
   al-Tab'a al-Sultaniyya for al-Bukhari (shamela.ws book 1681) and Muhammad Fu'ad
   Abd al-Baqi's edition for Muslim (book 1727). Wording, narrator, number, kitab and
   bab all match. `npm run verify:sources` re-runs that collation on demand and also
   asks Shamela to resolve each printed number back to a page id, so a wrong link is
   caught rather than trusted.
 
-Three defects were found and fixed by this pass:
+Four defects were found and fixed by this pass:
 
 - `bukhari:1` was missing a sukun and had its shadda and fatha in non-canonical order.
 - `bukhari:527` was quoted as the three-word fragment `ثُمَّ بِرُّ الْوَالِدَيْنِ`
   under the line "قال رسول الله صلى الله عليه وسلم", which is unreadable as printed.
   It now carries the question it answers, attributed to Ibn Mas'ud.
 - The `sincerity` bab carried an honorific the printed heading does not have.
+- Every ordinal on the site rendered as a Latin digit in production. The Workers
+  runtime ships without Arabic locale data, so `toLocaleString('ar')` silently fell
+  back — `01 الإخلاص` in an Arabic sidebar. All ordinals now map digits explicitly.
 
 Three excerpts that stopped short of their own point were widened to the full
 prophetic sentence (`bukhari:6094`, `bukhari:1469`, `muslim:2702b`).
 
 ## Checks run
 
-- `npm run check`: source digests, 18 lesson schemas, 18 narration records, 24 Qur'an
-  references, 12 integrity tests, TypeScript and lint — all passing.
-- `npm run verify:sources`: all 18 narrations match their printed editions.
+- `npm run check`: source digests, 26 lesson schemas, 26 narration records, 33 Qur'an
+  references, 13 integrity tests, TypeScript and lint — all passing.
+- `npm run verify:sources`: all 26 narrations match their printed editions.
 - `npm run build`: production Worker and client assets built.
 - `TEST_ORIGIN=http://localhost:8787 npm run test:routes`: home, about, evidence index
-  and all 18 lesson pages return 200 with Arabic/RTL markup, exact Qur'an and hadith
+  and all 26 lesson pages return 200 with Arabic/RTL markup, exact Qur'an and hadith
   text, the narration's attribution line, its kitab and bab, its source links and its
   printed-edition link. An unknown lesson returns 404.
 - Contrast was computed, not estimated, for every colour pair in both schemes. Every
