@@ -40,3 +40,4 @@ next-env.d.ts
 .claude/
 *.tsbuildinfo
 content/quran.generated.json
+content/lessons.generated.json

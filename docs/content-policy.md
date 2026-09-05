@@ -40,3 +40,11 @@ intentionally updating its digest. Do not copy website commentary or translation
 - Gentleness is not surrendering rights; obedience to people is not unconditional.
 - Every lesson source opens at a specific verse or narration.
 - Run npm run check and npm run build. Record actual checks; never claim scholarly approval.
+
+## Supplemental evidence for boundaries
+
+The parents lesson links Luqman 31:15: refusing a sinful demand does not remove
+kind companionship. The speech lesson links An-Nisa 4:148 for speaking about
+injustice. These support the specific boundaries, separately from each lesson's main
+verse and hadith. The applications were independently checked against the source
+pages during development; this is a source review, not a claim of scholarly approval.
