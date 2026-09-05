@@ -1,6 +1,6 @@
 import type { Metadata, Viewport } from 'next';
 import '@fontsource-variable/noto-naskh-arabic/wght.css';
-import '@fontsource-variable/reem-kufi/wght.css';
+import '@fontsource-variable/cairo/wght.css';
 import '@fontsource/amiri-quran/arabic-400.css';
 import './globals.css';
 import { Header } from '@/components/layout/Header';
@@ -10,7 +10,6 @@ const DESCRIPTION =
 export const metadata: Metadata = {
   title: { default: 'مسلم بحق | إيمان يثمر خُلُقًا', template: '%s | مسلم بحق' },
   applicationName: 'مسلم بحق',
-  icons: { icon: '/favicon.svg' },
   description: DESCRIPTION,
   robots: { index: true, follow: true },
   openGraph: {

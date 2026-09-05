@@ -19,6 +19,7 @@ Open the local address printed by the server (normally http://localhost:3000).
 ```sh
 npm run check    # source integrity, content tests, TypeScript, lint
 npm run build    # validate content and make the production Worker
+npm run build:pages  # static export for GitHub Pages, prefixed with /true-muslim
 npm start        # serve the production build locally
 # In another terminal, set TEST_ORIGIN to that server URL:
 TEST_ORIGIN=http://localhost:8787 npm run test:routes
@@ -33,7 +34,7 @@ run it whenever a narration is added or its wording changes.
 - Twenty-six lessons across five relationships: with Allah, with people, with family,
   with oneself, and with the world around us. Each has evidence, three suggested
   actions, a scenario, a reflection question, examples of harm to avoid, and a boundary.
-- Arabic RTL pages set in self-hosted Noto Naskh Arabic, with Reem Kufi headings and
+- Arabic RTL pages set in self-hosted Noto Naskh Arabic, with Cairo headings and
   Amiri Quran for revelation; responsive layouts, keyboard focus, skip navigation,
   print styles, meaningful URLs and per-lesson metadata.
 - Server-rendered reading and navigation, with no account, analytics, or piety scoring.
@@ -52,7 +53,8 @@ lib/                    typed content access and UI utility
 scripts/                source validation, focused tests, source re-collation
 data/                   pinned Quran corpus, hadith and integrity records
 docs/                   editorial rules, architecture, verification notes
-public/                 favicon, notices and license texts
+app/icon.svg            favicon; file-based so it picks up the Pages base path
+public/                 notices and license texts
 .github/workflows/      checks on pushes and pull requests
 ```
 
@@ -87,11 +89,24 @@ This is an introductory collection, not a complete curriculum or a fatwa service
 
 ## Deployment
 
-The production build targets a Cloudflare Worker through Sites. `.openai/hosting.json`
-contains this project's non-secret Sites ID. GitHub Actions runs validation only; it
-does not publish to GitHub Pages or another public audience. The GitHub origin is
-preserved. When copying the project, register your own Sites project rather than
-reusing this project's ID. No hosting credential belongs in the repository.
+The site is published to GitHub Pages at <https://edriso.github.io/true-muslim/>.
+`.github/workflows/pages.yml` runs `npm run check`, then builds a static export and
+uploads it; every route is prerendered, so Pages serves plain HTML with no server.
+
+```sh
+PAGES_BASE_PATH=/true-muslim npm run build:pages
+```
+
+`next.config.ts` switches to `output: 'export'` only when `PAGES_BASE_PATH` is set,
+because Pages serves a project site under `/<repo>/` and every URL needs that prefix
+baked in. The export writes the whole site to `dist/client/true-muslim/`, which is the
+artifact root; `scripts/pages.mjs` then adds the 404 page and the `.nojekyll` marker
+that stops Jekyll discarding every `_next/` asset.
+
+Without that variable the build is unchanged and still targets a Cloudflare Worker
+through Sites. `.openai/hosting.json` contains this project's non-secret Sites ID.
+When copying the project, register your own Sites project rather than reusing this
+project's ID. No hosting credential belongs in the repository.
 
 See [verification notes](docs/verification.md) for completed checks and known limits.
 

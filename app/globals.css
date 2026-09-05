@@ -20,12 +20,13 @@
   --band-accent: #d4c18c;
   --band-link-hover: #a8d9be;
   color-scheme: light;
-  /* Naskh for reading, Kufi for headings: the pairing Arabic books use, and the
-     Qur'an keeps Amiri Quran. `serif` resolves to a system Naskh under lang=ar,
-     so the swap period never hands a Kufi face to a paragraph. */
+  /* Naskh for reading; Cairo for headings, which is the weight range its foundry
+     designed for display. The Qur'an keeps Amiri Quran. `serif` resolves to a
+     system Naskh under lang=ar, so the swap never hands a display face to a
+     paragraph. */
   --font-body: 'Noto Naskh Arabic Variable', 'Amiri', 'Geeza Pro', serif;
   --font-display:
-    'Reem Kufi Variable', 'Noto Naskh Arabic Variable', 'Amiri', serif;
+    'Cairo Variable', 'Noto Naskh Arabic Variable', 'Amiri', serif;
   --font-quran: 'Amiri Quran', 'Amiri', 'Scheherazade New', serif;
   font-family: var(--font-body);
   color: var(--ink);

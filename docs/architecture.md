@@ -20,7 +20,7 @@ Twenty-six short lessons form an introductory collection, not an exhaustive acco
 The generated Sites scaffold uses React, TypeScript, and Vinext (Next-compatible
 routes) with Vite. Retain its provided packages and lockfile; the app itself needs
 only server components and CSS. Local Arabic fonts are packaged with the app:
-Noto Naskh Arabic for reading, Reem Kufi for headings, Amiri Quran for revelation.
+Noto Naskh Arabic for reading, Cairo for headings, Amiri Quran for revelation.
 No external religious API is called at runtime. All evidence is available offline
 once the page has loaded; this is not a service-worker offline app.
 
@@ -30,6 +30,13 @@ once the page has loaded; this is not a service-worker offline app.
 2. Build the reading experience and twenty-six sourced lessons.
 3. Enforce corpus, source record, and lesson validation; type-check and build.
 4. Prepare deployment and document verification limitations.
+5. Publish to GitHub Pages as a fully prerendered static export.
+
+Both build targets come from one codebase. `PAGES_BASE_PATH` turns on
+`output: 'export'` and the `/true-muslim` prefix; without it the build is the
+Cloudflare Worker. Every route is static, so nothing is lost in the export — there
+are no API routes, no runtime data fetching, and the only client component is the
+error boundary.
 
 A checksum detects accidental changes; it does not prove that editorial interpretation
 is correct. Human review by a qualified person remains valuable before broad release.

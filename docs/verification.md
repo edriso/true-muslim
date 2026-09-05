@@ -48,7 +48,7 @@ prophetic sentence (`bukhari:6094`, `bukhari:1469`, `muslim:2702b`).
   text pair passes WCAG AA; the only sub-3:1 pairs left are plain dividers, which are
   decorative and exempt.
 - Glyph coverage was checked by parsing the shipped woff2 files: Noto Naskh Arabic
-  covers every codepoint in the lesson and narration prose, Reem Kufi covers every UI
+  covers every codepoint in the lesson and narration prose, Cairo covers every UI
   string including Arabic-Indic digits, and Amiri Quran covers all nine Qur'anic
   annotation marks the corpus uses.
 
@@ -63,6 +63,9 @@ prophetic sentence (`bukhari:6094`, `bukhari:1469`, `muslim:2702b`).
   narration to a virtue is sound. The site says this plainly on `/daleel`.
 - `npm run verify:sources` depends on shamela.ws staying reachable and keeping its
   page ids. If it starts failing wholesale, check the site before the data.
-- No sitemap or canonical URLs are emitted, because the project has no public domain
-  recorded — only a Sites project id. Add `metadataBase`, `app/sitemap.ts` and
-  per-page `alternates.canonical` once a domain exists.
+- The Pages artifact was link-checked by serving it the way GitHub Pages serves a
+  project site: all 41 internal URLs across the 30 prerendered pages resolve, and an
+  unknown path returns the 404 page. That was a local mock, not the live site.
+- No sitemap or canonical URLs are emitted yet. Now that the site has a public URL,
+  `metadataBase: new URL('https://edriso.github.io/true-muslim/')` plus `app/sitemap.ts`
+  and per-page `alternates.canonical` are worth adding.

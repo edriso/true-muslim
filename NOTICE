@@ -36,11 +36,11 @@ inspection date are recorded per narration in data/hadith.json. Classical
 narration texts are not under copyright; no website translations, commentary,
 or page markup are redistributed.
 
-Noto Naskh Arabic, Reem Kufi and Amiri Quran fonts: SIL Open Font License 1.1.
+Noto Naskh Arabic, Cairo and Amiri Quran fonts: SIL Open Font License 1.1.
 Distributed through @fontsource-variable/noto-naskh-arabic,
-@fontsource-variable/reem-kufi and @fontsource/amiri-quran, all self-hosted.
+@fontsource-variable/cairo and @fontsource/amiri-quran, all self-hosted.
 Font license texts: public/licenses/noto-naskh-arabic.txt,
-public/licenses/reem-kufi.txt and public/licenses/amiri-quran.txt.
+public/licenses/cairo.txt and public/licenses/amiri-quran.txt.
 
 Lucide icons: ISC License. See public/licenses/lucide.txt.
 The generated Sites scaffold and package dependencies retain their own licenses.
