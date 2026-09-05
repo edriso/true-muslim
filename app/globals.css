@@ -981,11 +981,20 @@ h1 span {
     margin: 18mm 16mm;
   }
   :root {
+    /* Printing from a dark OS theme would otherwise carry the dark surfaces
+       onto paper, so the whole palette is reset here, not just the text. */
+    --bg: #fff;
+    --paper: #fff;
+    --soft: #fff;
     --ink: #000;
     --muted: #333;
     --green: #000;
     --line: #999;
     --line-strong: #666;
+    --band-bg: #fff;
+    --band-ink: #000;
+    --band-soft: #000;
+    --band-accent: #000;
   }
   body {
     background: #fff;
