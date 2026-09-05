@@ -88,5 +88,77 @@
     "narrator": "أبو هريرة",
     "excerpt": true,
     "checkedAt": "2026-09-05"
+  },
+  "excellence": {
+    "text": "إِنَّ اللَّهَ كَتَبَ الإِحْسَانَ عَلَى كُلِّ شَىْءٍ",
+    "url": "https://sunnah.com/muslim:1955a",
+    "collection": "مسلم",
+    "number": "1955a",
+    "narrator": "شداد بن أوس",
+    "excerpt": true,
+    "checkedAt": "2026-09-05"
+  },
+  "kinship": {
+    "text": "لَيْسَ الْوَاصِلُ بِالْمُكَافِئِ، وَلَكِنِ الْوَاصِلُ الَّذِي إِذَا قَطَعَتْ رَحِمُهُ وَصَلَهَا",
+    "url": "https://sunnah.com/bukhari:5991",
+    "collection": "البخاري",
+    "number": "5991",
+    "narrator": "عبد الله بن عمرو",
+    "excerpt": false,
+    "checkedAt": "2026-09-05"
+  },
+  "neighbors": {
+    "text": "مَا زَالَ يُوصِينِي جِبْرِيلُ بِالْجَارِ حَتَّى ظَنَنْتُ أَنَّهُ سَيُوَرِّثُهُ",
+    "url": "https://sunnah.com/bukhari:6014",
+    "collection": "البخاري",
+    "number": "6014",
+    "narrator": "عائشة",
+    "excerpt": false,
+    "checkedAt": "2026-09-05"
+  },
+  "generosity": {
+    "text": "اتَّقُوا النَّارَ وَلَوْ بِشِقِّ تَمْرَةٍ",
+    "url": "https://sunnah.com/bukhari:1417",
+    "collection": "البخاري",
+    "number": "1417",
+    "narrator": "عدي بن حاتم",
+    "excerpt": false,
+    "checkedAt": "2026-09-05"
+  },
+  "forgiveness": {
+    "text": "وَمَا زَادَ اللَّهُ عَبْدًا بِعَفْوٍ إِلاَّ عِزًّا",
+    "url": "https://sunnah.com/muslim:2588",
+    "collection": "مسلم",
+    "number": "2588",
+    "narrator": "أبو هريرة",
+    "excerpt": true,
+    "checkedAt": "2026-09-05"
+  },
+  "gratitude": {
+    "text": "إِنَّ اللَّهَ لَيَرْضَى عَنِ الْعَبْدِ أَنْ يَأْكُلَ الأَكْلَةَ فَيَحْمَدَهُ عَلَيْهَا أَوْ يَشْرَبَ الشَّرْبَةَ فَيَحْمَدَهُ عَلَيْهَا",
+    "url": "https://sunnah.com/muslim:2734a",
+    "collection": "مسلم",
+    "number": "2734a",
+    "narrator": "أنس بن مالك",
+    "excerpt": false,
+    "checkedAt": "2026-09-05"
+  },
+  "modesty": {
+    "text": "الْحَيَاءُ لاَ يَأْتِي إِلاَّ بِخَيْرٍ",
+    "url": "https://sunnah.com/bukhari:6117",
+    "collection": "البخاري",
+    "number": "6117",
+    "narrator": "عمران بن حصين",
+    "excerpt": true,
+    "checkedAt": "2026-09-05"
+  },
+  "repentance": {
+    "text": "يَا أَيُّهَا النَّاسُ تُوبُوا إِلَى اللَّهِ",
+    "url": "https://sunnah.com/muslim:2702b",
+    "collection": "مسلم",
+    "number": "2702b",
+    "narrator": "الأغر المزني",
+    "excerpt": true,
+    "checkedAt": "2026-09-05"
   }
 }

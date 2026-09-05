@@ -26,13 +26,13 @@ TEST_ORIGIN=http://localhost:8787 npm run test:routes
 
 ## What is included
 
-- Ten lessons: sincerity, honesty, mercy, gentleness, trust, justice, parents, speech,
-  patience, and humility. Each has evidence, three suggested actions, a scenario,
-  a reflection question, and an important boundary.
+- Eighteen lessons across faith, people, family, and self-discipline. Each has evidence, three suggested actions, a scenario,
+  a reflection question, examples of harm to avoid, and an important boundary.
 - Arabic RTL pages, local Cairo and Amiri Quran fonts, responsive layouts, keyboard
   focus, skip navigation, print styles, meaningful URLs and per-lesson metadata.
 - Server-rendered reading and navigation, with no account, analytics, or piety scoring.
-- A methodology/sources page and a clear way to report content errors.
+- A dedicated `/daleel` page with foundational verses, a complete lesson evidence index,
+  source methodology, explicit scope limits, and a way to report errors.
 
 ## Layout
 
@@ -61,7 +61,7 @@ Read [AGENTS.md](AGENTS.md) and [the content policy](docs/content-policy.md) bef
 editing. `CLAUDE.md` points to the same rules so instructions cannot drift.
 
 To add a lesson, add a JSON file under `content/lessons/` following a neighboring
-record. Give it a unique slug and order and use an existing category. Add a verified
+record. Give it a unique slug and order and use a category from `content/guide.json`. Add a verified
 hadith record if needed, then review and update its integrity digest deliberately.
 `npm run content:build` discovers the lesson; no route or component edit is needed.
 

@@ -44,3 +44,17 @@ before changing the app or build pipeline. These rules apply to agents and human
 - Commit coherent milestones with short imperative messages. No AI signatures or
   Co-Authored-By trailers. Do not commit local settings, credentials, or build outputs.
 - Do not push to GitHub or publish publicly unless the user authorizes it.
+
+## Evidence index and expanding coverage
+
+- Keep `/daleel` connected to the same lesson and source records as the reading pages.
+  It must include the site's scope and limits, never an unsupported claim of completeness.
+- `content/guide.json` is the single source for category order and foundation verses.
+  Tafsir URLs must identify the exact referenced verse.
+- Preserve narration suffixes in both URLs and visible numbers (for example `1955a`).
+- The authors' closing acknowledgement is editorial, not a hadith. Never attribute it
+  to the Prophet or a Companion without separately verifying that attribution.
+- New lessons include both useful actions and concrete examples of harm to avoid.
+  Keep them appropriate for a broad age range; detailed personal rulings belong with scholars.
+- When changing lesson counts or scope, update README, architecture, and verification
+  notes. Preserve existing lesson URLs even if the reading order improves.

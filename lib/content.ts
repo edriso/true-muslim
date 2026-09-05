@@ -1,9 +1,11 @@
+import guide from '@/content/guide.json';
 import lessonData from '@/content/lessons.generated.json';
 import quran from '@/content/quran.generated.json';
 import hadith from '@/data/hadith.json';
 
 export const lessons = lessonData;
-export const categories = ['مع الله', 'مع الناس', 'في البيت', 'مع النفس'];
+export const categories = guide.categories;
+export const foundations = guide.foundations;
 export type Lesson = (typeof lessonData)[number];
 export const getLesson = (slug: string) =>
   lessons.find((lesson) => lesson.slug === slug);

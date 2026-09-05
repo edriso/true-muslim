@@ -48,3 +48,33 @@ kind companionship. The speech lesson links An-Nisa 4:148 for speaking about
 injustice. These support the specific boundaries, separately from each lesson's main
 verse and hadith. The applications were independently checked against the source
 pages during development; this is a source review, not a claim of scholarly approval.
+
+## Evidence page and scope (expanded collection)
+
+`content/guide.json` owns the categories, foundation verses, their source explanations,
+related lessons, and non-lesson verse references. `/daleel` lists every lesson's
+primary and supplementary evidence from the same records used by the lesson pages.
+It explains what this introductory site does not claim. Do not claim comprehensive
+coverage of Islam, guaranteed spiritual outcomes, or completed scholarly review.
+
+The authors' closing statement is original editorial wording, not a hadith or a
+quotation attributed to a Companion. Its permissibility and meaning were checked at
+https://islamweb.net/ar/fatwa/print.php?id=79988 (accessed 2026-09-05). It does not
+remove the authors' duty to acknowledge and correct mistakes.
+
+Foundation summaries were checked against Tafsir al-Sa'di hosted by King Saud University:
+
+- https://quran.ksu.edu.sa/tafseer/saadi/sura16-aya90.html
+- https://quran.ksu.edu.sa/tafseer/saadi/sura4-aya58.html
+  They are brief editorial summaries, not verbatim tafsir or independent rulings.
+  Justice also links 60:8 for kindness and fairness toward non-hostile non-Muslims.
+
+Narration identifiers may contain suffixes (1955a, 2734a, 2702b). Preserve these in
+links and visible labels; never convert the entire identifier with Number().
+Every lesson has an `avoid` list: examples of harmful behavior, not an exhaustive
+classification of forbidden acts. Labels must distinguish it from quoted evidence.
+The repentance explanation includes leaving the sin and regretting it, checked
+against Tafsir al-Sa'di on 3:135:
+https://quran.ksu.edu.sa/tafseer/saadi/sura3-aya135.html.
+The modesty lesson's invitation to ask needed religious questions is supported by
+https://sunnah.com/bukhari:130; no private or intimate details are requested by the app.

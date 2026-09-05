@@ -28,7 +28,7 @@ export function validateLesson(lesson, slugs, orders, verses, hadith) {
     'Invalid or duplicate order',
   );
   assert.ok(
-    ['مع الله', 'مع الناس', 'في البيت', 'مع النفس'].includes(lesson.category),
+    read('content/guide.json').categories.includes(lesson.category),
     'Unknown category',
   );
   assert.ok(verses[lesson.ayah], `Unknown ayah: ${lesson.ayah}`);
@@ -43,6 +43,12 @@ export function validateLesson(lesson, slugs, orders, verses, hadith) {
       lesson.actions.every((a) => typeof a === 'string' && a.trim()),
     'Three nonempty actions required',
   );
+  assert.ok(
+    Array.isArray(lesson.avoid) &&
+      lesson.avoid.length >= 2 &&
+      lesson.avoid.every((value) => typeof value === 'string' && value.trim()),
+    'At least two behaviors to avoid required',
+  );
   // Revelation belongs in pinned source data, never in editorial fields.
   assert.ok(
     !/[\u0671\u0670\u06d6-\u06ed]/u.test(JSON.stringify(lesson)),
@@ -54,7 +60,13 @@ export function validateLesson(lesson, slugs, orders, verses, hadith) {
   orders.add(lesson.order);
 }
 export function buildContent() {
-  for (const [file, expected] of Object.entries(read('data/integrity.json'))) {
+  const integrity = read('data/integrity.json');
+  assert.deepEqual(
+    Object.keys(integrity).sort(),
+    ['data/hadith.json', 'data/quran-uthmani.txt', 'data/surah-names.json'],
+    'Missing or unexpected source integrity entry',
+  );
+  for (const [file, expected] of Object.entries(integrity)) {
     assert.equal(
       createHash('sha256').update(readFileSync(file)).digest('hex'),
       expected,
@@ -95,6 +107,16 @@ export function buildContent() {
     assert.equal(typeof record.excerpt, 'boolean');
     assert.ok(record.url.endsWith(`:${record.number}`));
     assert.ok(['البخاري', 'مسلم'].includes(record.collection));
+    assert.equal(
+      record.collection,
+      record.url.includes('/bukhari:') ? 'البخاري' : 'مسلم',
+      'Collection does not match source URL',
+    );
+    assert.match(record.checkedAt, /^\d{4}-\d{2}-\d{2}$/);
+    assert.ok(
+      !Number.isNaN(Date.parse(record.checkedAt)),
+      'Invalid source inspection date',
+    );
   }
   const slugs = new Set(),
     orders = new Set();
@@ -107,10 +129,28 @@ export function buildContent() {
       return lesson;
     });
   assert.ok(lessons.length > 0);
+  const guide = read('content/guide.json');
+  for (const foundation of guide.foundations) {
+    assert.ok(foundation.title && foundation.summary);
+    assert.ok(verses[foundation.reference], 'Unknown foundation verse');
+    const [chapter, verse] = foundation.reference.split(':');
+    assert.equal(
+      foundation.tafsir,
+      `https://quran.ksu.edu.sa/tafseer/saadi/sura${chapter}-aya${verse}.html`,
+      'Tafsir link must match the foundation verse',
+    );
+    assert.ok(
+      foundation.lessons.every((slug) => slugs.has(slug)),
+      'Unknown foundation lesson',
+    );
+    assert.match(
+      foundation.tafsir,
+      /^https:\/\/quran\.ksu\.edu\.sa\/tafseer\/saadi\/sura[0-9]+-aya[0-9]+\.html$/,
+    );
+  }
   const references = new Set([
-    '68:4',
-    '2:285',
-    '31:15',
+    ...guide.pageReferences,
+    ...guide.foundations.map((f) => f.reference),
     ...lessons.map((l) => l.ayah),
     ...lessons.map((l) => l.boundaryAyah).filter(Boolean),
   ]);
@@ -118,7 +158,7 @@ export function buildContent() {
   for (const ref of references) {
     const [surah, ayah] = ref.split(':');
     assert.ok(
-      verses[ref] && Number(ayah) <= names[surah].verses,
+      verses[ref] && Number(ayah) <= names[surah].verses && ayah !== '1',
       `Invalid reference ${ref}`,
     );
     selected[ref] = {

@@ -38,3 +38,12 @@ test('empty suggested actions fail content review checks', () =>
     () => run({ ...lesson, actions: ['', 'two', 'three'] }),
     /nonempty/,
   ));
+test('lessons require concrete examples of behavior to avoid', () => {
+  assert.throws(() => run({ ...lesson, avoid: [] }), /behaviors to avoid/);
+});
+test('supplementary evidence must resolve to a real verse', () => {
+  assert.throws(
+    () => run({ ...lesson, boundaryAyah: '115:9' }),
+    /Unknown boundary/,
+  );
+});
