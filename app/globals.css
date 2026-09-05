@@ -234,7 +234,7 @@ h1 span {
   color: var(--green);
 }
 .lead {
-  font-size: 1.2rem;
+  font-size: clamp(1.15rem, 1.1rem + 0.25vw, 1.32rem);
   max-width: 480px;
   color: var(--muted);
   line-height: 2;
@@ -799,9 +799,6 @@ h1 span {
     grid-template-columns: 1fr;
     gap: 35px;
     padding-block: 36px;
-  }
-  .lead {
-    font-size: 1.08rem;
   }
   .intro-verse {
     max-width: 420px;
