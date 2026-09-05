@@ -1,0 +1,92 @@
+{
+  "sincerity": {
+    "text": "إِنَّمَا الأَعْمَالُ بِالنِّيَّاتِ، وَإِنَّمَا لِكُلِّ امْرِئٍ مَا نَوَى",
+    "url": "https://sunnah.com/bukhari:1",
+    "collection": "البخاري",
+    "number": "1",
+    "narrator": "عمر بن الخطاب",
+    "excerpt": true,
+    "checkedAt": "2026-09-05"
+  },
+  "honesty": {
+    "text": "إِنَّ الصِّدْقَ يَهْدِي إِلَى الْبِرِّ، وَإِنَّ الْبِرَّ يَهْدِي إِلَى الْجَنَّةِ",
+    "url": "https://sunnah.com/bukhari:6094",
+    "collection": "البخاري",
+    "number": "6094",
+    "narrator": "عبد الله بن مسعود",
+    "excerpt": true,
+    "checkedAt": "2026-09-05"
+  },
+  "mercy": {
+    "text": "مَنْ لاَ يَرْحَمُ لاَ يُرْحَمُ",
+    "url": "https://sunnah.com/bukhari:6013",
+    "collection": "البخاري",
+    "number": "6013",
+    "narrator": "جرير بن عبد الله",
+    "excerpt": false,
+    "checkedAt": "2026-09-05"
+  },
+  "gentleness": {
+    "text": "إِنَّ اللَّهَ رَفِيقٌ يُحِبُّ الرِّفْقَ",
+    "url": "https://sunnah.com/muslim:2593",
+    "collection": "مسلم",
+    "number": "2593",
+    "narrator": "عائشة",
+    "excerpt": true,
+    "checkedAt": "2026-09-05"
+  },
+  "trust": {
+    "text": "آيَةُ الْمُنَافِقِ ثَلاَثٌ إِذَا حَدَّثَ كَذَبَ، وَإِذَا وَعَدَ أَخْلَفَ، وَإِذَا اؤْتُمِنَ خَانَ",
+    "url": "https://sunnah.com/bukhari:33",
+    "collection": "البخاري",
+    "number": "33",
+    "narrator": "أبو هريرة",
+    "excerpt": false,
+    "checkedAt": "2026-09-05"
+  },
+  "justice": {
+    "text": "إِنَّ الْمُقْسِطِينَ عِنْدَ اللَّهِ عَلَى مَنَابِرَ مِنْ نُورٍ",
+    "url": "https://sunnah.com/muslim:1827",
+    "collection": "مسلم",
+    "number": "1827",
+    "narrator": "عبد الله بن عمرو",
+    "excerpt": true,
+    "checkedAt": "2026-09-05"
+  },
+  "parents": {
+    "text": "ثُمَّ بِرُّ الْوَالِدَيْنِ",
+    "url": "https://sunnah.com/bukhari:527",
+    "collection": "البخاري",
+    "number": "527",
+    "narrator": "عبد الله بن مسعود",
+    "excerpt": true,
+    "checkedAt": "2026-09-05"
+  },
+  "speech": {
+    "text": "وَمَنْ كَانَ يُؤْمِنُ بِاللَّهِ وَالْيَوْمِ الآخِرِ فَلْيَقُلْ خَيْرًا أَوْ لِيَصْمُتْ",
+    "url": "https://sunnah.com/bukhari:6018",
+    "collection": "البخاري",
+    "number": "6018",
+    "narrator": "أبو هريرة",
+    "excerpt": true,
+    "checkedAt": "2026-09-05"
+  },
+  "patience": {
+    "text": "وَمَنْ يَتَصَبَّرْ يُصَبِّرْهُ اللَّهُ",
+    "url": "https://sunnah.com/bukhari:1469",
+    "collection": "البخاري",
+    "number": "1469",
+    "narrator": "أبو سعيد الخدري",
+    "excerpt": true,
+    "checkedAt": "2026-09-05"
+  },
+  "humility": {
+    "text": "وَمَا تَوَاضَعَ أَحَدٌ لِلَّهِ إِلاَّ رَفَعَهُ اللَّهُ",
+    "url": "https://sunnah.com/muslim:2588",
+    "collection": "مسلم",
+    "number": "2588",
+    "narrator": "أبو هريرة",
+    "excerpt": true,
+    "checkedAt": "2026-09-05"
+  }
+}

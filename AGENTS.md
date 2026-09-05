@@ -5,6 +5,7 @@ A free, Arabic guide to Islamic character. Correctness comes before polish. Read
 before changing the app or build pipeline. These rules apply to agents and humans.
 
 ## Religious integrity
+
 - Use easy Modern Standard Arabic. Short sentences, familiar examples, respectful tone.
 - The title is an aspiration, never a verdict about someone's faith. No takfir, sectarian
   attacks, shaming, invented fatwas, or promises of a specific reward without evidence.
@@ -23,6 +24,7 @@ before changing the app or build pipeline. These rules apply to agents and human
   proves integrity, not scholarly review. Do not claim the content was scholar-reviewed.
 
 ## Engineering and accessibility
+
 - Keep route files in `app/`, shared UI in `components/`, content in `content/`,
   source records in `data/`, pure helpers in `lib/`, checks in `scripts/`, guides in `docs/`.
 - Prefer server-rendered reading pages; client JavaScript only for real interactions.
@@ -36,6 +38,7 @@ before changing the app or build pipeline. These rules apply to agents and human
 - Add third-party asset/data licenses to NOTICE. Preserve Tanzil attribution.
 
 ## Delivery
+
 - Run `npm run check` and `npm run build` before finishing. Never hide failures.
 - Tests should protect source integrity, content references, and meaningful user behavior.
 - Commit coherent milestones with short imperative messages. No AI signatures or
