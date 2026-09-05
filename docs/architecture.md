@@ -13,12 +13,14 @@ Eighteen short lessons form an introductory collection, not an exhaustive accoun
 - content/lessons/: one JSON record per lesson, separate from presentation
 - data/: pinned Qur'an corpus, hadith records, and source integrity manifest
 - lib/: typed content access
-- scripts/: offline content checks and generated Qur'an subset
+- scripts/: offline content checks, the generated Qur'an subset, and the networked
+  re-collation of narrations against their printed editions
 - docs/: writing rules and architecture
 
 The generated Sites scaffold uses React, TypeScript, and Vinext (Next-compatible
 routes) with Vite. Retain its provided packages and lockfile; the app itself needs
-only server components and CSS. Local Arabic fonts are packaged with the app.
+only server components and CSS. Local Arabic fonts are packaged with the app:
+Noto Naskh Arabic for reading, Reem Kufi for headings, Amiri Quran for revelation.
 No external religious API is called at runtime. All evidence is available offline
 once the page has loaded; this is not a service-worker offline app.
 
