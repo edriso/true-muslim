@@ -45,6 +45,8 @@ before changing the app or build pipeline. These rules apply to agents and human
 ## Delivery
 
 - Run `npm run check` and `npm run build` before finishing. Never hide failures.
+- Run `npm run verify:sources` after touching `data/hadith.json`. It needs network
+  access, so it stays out of `npm run check`; a failure means the record, not the tool.
 - Tests should protect source integrity, content references, and meaningful user behavior.
 - Commit coherent milestones with short imperative messages. No AI signatures or
   Co-Authored-By trailers. Do not commit local settings, credentials, or build outputs.

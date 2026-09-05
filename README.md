@@ -24,6 +24,10 @@ npm start        # serve the production build locally
 TEST_ORIGIN=http://localhost:8787 npm run test:routes
 ```
 
+`npm run verify:sources` re-collates every narration against the printed critical
+edition it cites. It needs network access, so it is not part of `npm run check`;
+run it whenever a narration is added or its wording changes.
+
 ## What is included
 
 - Eighteen lessons across faith, people, family, and self-discipline. Each has evidence, three suggested actions, a scenario,
@@ -44,7 +48,7 @@ components/layout/      shared header and footer
 content/lessons/         one editable JSON record per lesson
 content/*.generated.json  generated automatically; never edit
 lib/                    typed content access and UI utility
-scripts/                source validation and focused tests
+scripts/                source validation, focused tests, source re-collation
 data/                   pinned Quran corpus, hadith and integrity records
 docs/                   editorial rules, architecture, verification notes
 public/                 favicon, notices and license texts
@@ -69,9 +73,12 @@ hadith record if needed, then review and update its integrity digest deliberatel
 Quran text comes from the unmodified, checksum-pinned Tanzil corpus used by
 [learn-tajweed](https://github.com/edriso/learn-tajweed). Verses are resolved by numeric
 reference; the browser only receives those used. Hadith excerpts come from specific
-pages of Sahih al-Bukhari and Sahih Muslim on Sunnah.com, with their sources recorded
-in `data/hadith.json`. Short excerpts are labelled explicitly. The integrity checks
-protect source bytes and references; they do not substitute for scholarly review.
+pages of Sahih al-Bukhari and Sahih Muslim on Sunnah.com, then collated against the
+printed critical editions — al-Tab'a al-Sultaniyya for al-Bukhari and Muhammad Fu'ad
+Abd al-Baqi's for Muslim — which is where the recorded wording, narrator, number,
+kitab and bab come from. All of it lives in `data/hadith.json`, and short excerpts are
+labelled explicitly. The integrity checks protect source bytes and references; they do
+not substitute for scholarly review.
 
 This is an introductory collection, not a complete curriculum or a fatwa service.
 

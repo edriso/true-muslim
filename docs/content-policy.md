@@ -38,7 +38,9 @@ collection, which is the authority for wording, narrator, number and placement:
 - Sahih al-Bukhari — الطبعة السلطانية, https://shamela.ws/book/1681
 - Sahih Muslim — تحقيق محمد فؤاد عبد الباقي, https://shamela.ws/book/1727
 
-Record the exact page as `editionUrl`. Bukhari numbering on Sunnah.com follows the
+Record the exact page as `editionUrl`. `https://shamela.ws/ajax/specialnumber2id/<book>/<number>`
+resolves a printed number straight to its page id, so the link never has to be hunted
+for; `npm run verify:sources` uses it to re-check every stored link. Bukhari numbering on Sunnah.com follows the
 Sultaniyya edition and Muslim numbering follows Abd al-Baqi, so the printed number
 must match the number in the URL. Suffixed Muslim identifiers (1955a, 2702b) mark
 successive narrations under one printed number; link the page carrying that narration.

@@ -14,7 +14,8 @@
     "content:build": "node scripts/content.mjs",
     "check": "npm run content:build && npm run test && tsc --noEmit && npm run lint",
     "test": "node --test scripts/content.test.mjs",
-    "test:routes": "node scripts/smoke.mjs"
+    "test:routes": "node scripts/smoke.mjs",
+    "verify:sources": "node scripts/verify-sources.mjs"
   },
   "dependencies": {
     "@base-ui/react": "1.7.0",
