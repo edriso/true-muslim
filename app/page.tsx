@@ -1,7 +1,7 @@
 import Link from 'next/link';
 import { ArrowLeft, BookOpen, HeartHandshake, Sprout } from 'lucide-react';
 import { Ayah } from '@/components/content/Evidence';
-import { lessons, categories } from '@/lib/content';
+import { lessons, categories, foundations } from '@/lib/content';
 import { arabicOrdinal, arabicReference } from '@/lib/format';
 export default function Home() {
   return (
@@ -129,8 +129,9 @@ export default function Home() {
           <p className="eyebrow">من أين نبدأ؟</p>
           <h2>بالعدل والإحسان وأداء الأمانة.</h2>
           <p>
-            آيتان جامعتان في سورة النحل وسورة النساء، نرجع إليهما لفهم ما نفعله
-            من خير وما نجتنبه من أذى.
+            {arabicReference(foundations.length)} آيات جامعة نرجع إليها لفهم ما
+            نفعله من خير وما نجتنبه من أذى، ولنتذكّر أن حسن الخُلُق لا يقوم إلا مع
+            الإيمان والصلاة.
           </p>
         </div>
         <Link href="/daleel" className="button primary">
