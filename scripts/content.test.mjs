@@ -47,3 +47,35 @@ test('supplementary evidence must resolve to a real verse', () => {
     /Unknown boundary/,
   );
 });
+test('every narration records the printed edition it was checked against', () => {
+  const hadith = JSON.parse(readFileSync('data/hadith.json', 'utf8'));
+  const printed = {
+    البخاري: ['صحيح البخاري، الطبعة السلطانية', '1681'],
+    مسلم: ['صحيح مسلم، تحقيق محمد فؤاد عبد الباقي', '1727'],
+  };
+  for (const [id, record] of Object.entries(hadith)) {
+    const [edition, book] = printed[record.collection];
+    assert.equal(record.edition, edition, id);
+    assert.ok(
+      record.editionUrl.startsWith(`https://shamela.ws/book/${book}/`),
+      `${id} must link the printed edition of its own collection`,
+    );
+    assert.match(record.book, /^كتاب /u, id);
+    assert.match(record.chapter, /^باب /u, id);
+    assert.ok(record.narrator.trim() && record.honorific.trim(), id);
+  }
+});
+test('narrations that open mid-sentence carry their own attribution', () => {
+  const hadith = JSON.parse(readFileSync('data/hadith.json', 'utf8'));
+  for (const [id, record] of Object.entries(hadith)) {
+    // A quote starting with ثم has no antecedent under the default
+    // "قال رسول الله ﷺ" line, so it needs its own attribution.
+    if (/^ثُمَّ\b/u.test(record.text))
+      assert.ok(record.attribution, `${id} needs narration context`);
+  }
+});
+test('surah names are displayed with hamzat al-qat where the source omits it', () => {
+  buildContent();
+  const quran = JSON.parse(readFileSync('content/quran.generated.json', 'utf8'));
+  assert.equal(quran['14:7'].surahName, 'إبراهيم');
+});

@@ -25,11 +25,30 @@ ambiguity. The home page uses 68:4. Never write Qur'an in UI prose or lesson fie
 ## Hadith
 
 Use exact short excerpts from inspected pages of Sahih al-Bukhari or Sahih Muslim on
-Sunnah.com. Store the source URL, collection, number, narrator, excerpt flag, inspection
-date, and exact text in data/hadith.json. Collection membership supports the label
-صحيح; do not invent a separate grading attribution. The source manifest protects
-record bytes from unreviewed changes. Recheck wording, attribution, and context before
-intentionally updating its digest. Do not copy website commentary or translations.
+Sunnah.com. Store the source URL, collection, number, narrator, honorific, كتاب, باب,
+printed edition, printed-edition URL, excerpt flag, inspection date, and exact text in
+data/hadith.json. Collection membership supports the label صحيح; do not invent a
+separate grading attribution. The source manifest protects record bytes from unreviewed
+changes. Recheck wording, attribution, and context before intentionally updating its
+digest. Do not copy website commentary or translations.
+
+Every record is also collated against the printed critical edition of its own
+collection, which is the authority for wording, narrator, number and placement:
+
+- Sahih al-Bukhari — الطبعة السلطانية, https://shamela.ws/book/1681
+- Sahih Muslim — تحقيق محمد فؤاد عبد الباقي, https://shamela.ws/book/1727
+
+Record the exact page as `editionUrl`. Bukhari numbering on Sunnah.com follows the
+Sultaniyya edition and Muslim numbering follows Abd al-Baqi, so the printed number
+must match the number in the URL. Suffixed Muslim identifiers (1955a, 2702b) mark
+successive narrations under one printed number; link the page carrying that narration.
+
+A quotation must be readable as printed. An excerpt that opens with a connective
+(ثم، و) and has no antecedent is not acceptable under the default line
+"قال رسول الله صلى الله عليه وسلم". Either widen the excerpt to a self-contained span
+or set `attribution` to the wording that actually introduces it — for example a
+Companion's question in a narration shaped as a dialogue. Never paraphrase a narration
+into the attribution line and never present editorial framing as part of the quote.
 
 ## Review checklist
 
@@ -39,6 +58,7 @@ intentionally updating its digest. Do not copy website commentary or translation
 - Family duties do not become permission for harm; patience does not mean accepting abuse.
 - Gentleness is not surrendering rights; obedience to people is not unconditional.
 - Every lesson source opens at a specific verse or narration.
+- The narration text, narrator, number, كتاب and باب match the printed critical edition.
 - Run npm run check and npm run build. Record actual checks; never claim scholarly approval.
 
 ## Supplemental evidence for boundaries
@@ -78,3 +98,11 @@ against Tafsir al-Sa'di on 3:135:
 https://quran.ksu.edu.sa/tafseer/saadi/sura3-aya135.html.
 The modesty lesson's invitation to ask needed religious questions is supported by
 https://sunnah.com/bukhari:130; no private or intimate details are requested by the app.
+
+## Surah display names
+
+`data/surah-names.json` is kept byte-identical to its upstream copy, so it keeps the
+upstream spellings that omit hamzat al-qat' (ابراهيم، الانسان، النبإ) and that write
+hamzat al-wasl as qat' (الإنفطار، الإنشقاق). `scripts/content.mjs` corrects only how
+those names are displayed, through `SURAH_NAME_FIXES`. Never edit the pinned file to
+fix a spelling; add the display correction and keep the digest unchanged.

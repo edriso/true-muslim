@@ -87,6 +87,11 @@ export function buildContent() {
   );
   const names = read('data/surah-names.json');
   const hadith = read('data/hadith.json');
+  const EDITIONS = {
+    البخاري: { name: 'صحيح البخاري، الطبعة السلطانية', book: 1681 },
+    مسلم: { name: 'صحيح مسلم، تحقيق محمد فؤاد عبد الباقي', book: 1727 },
+  };
+  const HONORIFICS = ['رضي الله عنه', 'رضي الله عنها', 'رضي الله عنهما'];
   for (const record of Object.values(hadith)) {
     for (const field of [
       'text',
@@ -94,6 +99,11 @@ export function buildContent() {
       'collection',
       'number',
       'narrator',
+      'honorific',
+      'book',
+      'chapter',
+      'edition',
+      'editionUrl',
       'checkedAt',
     ])
       assert.ok(
@@ -112,6 +122,25 @@ export function buildContent() {
       record.url.includes('/bukhari:') ? 'البخاري' : 'مسلم',
       'Collection does not match source URL',
     );
+    assert.ok(
+      HONORIFICS.includes(record.honorific),
+      'Companion honorific must be one of the accepted forms',
+    );
+    assert.match(record.book, /^كتاب /u, 'Book must name a كتاب of the collection');
+    assert.match(record.chapter, /^باب /u, 'Chapter must name a باب of the collection');
+    // The printed critical edition is the wording check behind the reader-facing link.
+    const printed = EDITIONS[record.collection];
+    assert.equal(record.edition, printed.name, 'Unexpected printed edition');
+    assert.match(
+      record.editionUrl,
+      new RegExp(`^https://shamela\\.ws/book/${printed.book}/[0-9]+$`),
+      'Printed edition link must open the matching book',
+    );
+    if (record.attribution != null)
+      assert.ok(
+        typeof record.attribution === 'string' && record.attribution.trim(),
+        'Empty narration attribution',
+      );
     assert.match(record.checkedAt, /^\d{4}-\d{2}-\d{2}$/);
     assert.ok(
       !Number.isNaN(Date.parse(record.checkedAt)),
@@ -148,6 +177,15 @@ export function buildContent() {
       /^https:\/\/quran\.ksu\.edu\.sa\/tafseer\/saadi\/sura[0-9]+-aya[0-9]+\.html$/,
     );
   }
+  // The pinned upstream metadata omits hamzat al-qat' in a few surah names.
+  // Correct only how the name is displayed; the pinned file stays byte-identical.
+  const SURAH_NAME_FIXES = {
+    14: 'إبراهيم',
+    76: 'الإنسان',
+    78: 'النبأ',
+    82: 'الانفطار',
+    84: 'الانشقاق',
+  };
   const references = new Set([
     ...guide.pageReferences,
     ...guide.foundations.map((f) => f.reference),
@@ -163,7 +201,7 @@ export function buildContent() {
     );
     selected[ref] = {
       text: verses[ref],
-      surahName: names[surah].name,
+      surahName: SURAH_NAME_FIXES[surah] ?? names[surah].name,
       ayah,
       url: `https://tanzil.net/#${ref}`,
     };

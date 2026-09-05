@@ -14,6 +14,9 @@ before changing the app or build pipeline. These rules apply to agents and human
   paraphrase as revelation, silently normalize, or edit a verse. Do not weaken validation.
 - Hadith must have an inspected trusted source, exact quoted text, narrator, collection,
   number, and supported authenticity. Clearly label excerpts. Never stitch narrations.
+- Collate every narration against the printed critical edition of its collection and
+  record its كتاب, باب and edition page. A quoted excerpt must read correctly on its own;
+  give it an explicit `attribution` when the default prophetic line would not fit.
 - Explanations and activities are editorial, not prophetic wording or binding rulings.
 - Do not invent consensus. State relevant disagreement with reliable references or omit
   the disputed issue from this introductory guide. Refer personal fatwas to qualified scholars.

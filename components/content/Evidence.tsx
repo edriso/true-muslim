@@ -16,8 +16,7 @@ export function Ayah({
       <blockquote className="quran">{verse.text}</blockquote>
       <figcaption>
         <a href={verse.url}>
-          سورة {verse.surahName} · الآية{' '}
-          {Number(verse.ayah).toLocaleString('ar')}{' '}
+          سورة {verse.surahName} · الآية {arabicReference(verse.ayah)}{' '}
           <ArrowUpLeft size={15} aria-hidden="true" />
         </a>
       </figcaption>
@@ -31,7 +30,11 @@ export function Hadith({ id }: { id: string }) {
       <span className="eyebrow">
         {record.excerpt ? 'مقتطف من حديث صحيح' : 'حديث صحيح'}
       </span>
-      <p className="attribution">قال رسول الله صلى الله عليه وسلم:</p>
+      <p className="attribution">
+        {'attribution' in record
+          ? record.attribution
+          : 'قال رسول الله صلى الله عليه وسلم:'}
+      </p>
       <blockquote>{record.text}</blockquote>
       <figcaption>
         <a href={record.url}>
@@ -39,12 +42,7 @@ export function Hadith({ id }: { id: string }) {
           <ArrowUpLeft size={15} aria-hidden="true" />
         </a>
         <span>
-          الراوي: {record.narrator} ·{' '}
-          {record.narrator === 'عائشة'
-            ? 'رضي الله عنها'
-            : record.narrator === 'عبد الله بن عمرو'
-              ? 'رضي الله عنهما'
-              : 'رضي الله عنه'}
+          {record.book} · الراوي: {record.narrator} {record.honorific}
         </span>
       </figcaption>
     </figure>

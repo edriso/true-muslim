@@ -2,8 +2,9 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { lessons, getLesson, getAyah } from '@/lib/content';
+import { lessons, getLesson, getAyah, getHadith } from '@/lib/content';
 import { Ayah, Hadith } from '@/components/content/Evidence';
+import { arabicReference } from '@/lib/format';
 type Props = { params: Promise<{ slug: string }> };
 export function generateStaticParams() {
   return lessons.map(({ slug }) => ({ slug }));
@@ -65,10 +66,14 @@ export default async function LessonPage({ params }: Props) {
           <h2 id="evidence">من القرآن والسنة</h2>
           <Ayah reference={lesson.ayah} />
           <Hadith id={lesson.hadith} />
+          <p className="evidence-note">
+            موضع الحديث: {getHadith(lesson.hadith).chapter} — من{' '}
+            {getHadith(lesson.hadith).book}.
+          </p>
         </section>
         <section className="article-section avoid-box">
           <p className="editorial-label">أمثلة لما نجتنبه</p>
-          <h2>ونبتعد عن الأذى</h2>
+          <h2>ما نبتعد عنه</h2>
           <ul>
             {lesson.avoid.map((item) => (
               <li key={item}>{item}</li>
@@ -91,13 +96,13 @@ export default async function LessonPage({ params }: Props) {
           <p>{lesson.scenario}</p>
         </section>
         <section className="article-section boundary">
-          <strong>معنى ينبغي الانتباه إليه</strong>
+          <strong>انتبه إلى هذا</strong>
           <p>{lesson.boundary}</p>
           {lesson.boundaryAyah && (
             <p>
               <a className="text-link" href={getAyah(lesson.boundaryAyah).url}>
-                اقرأ سورة {getAyah(lesson.boundaryAyah).surahName}، الآية{' '}
-                {Number(getAyah(lesson.boundaryAyah).ayah).toLocaleString('ar')}
+                اقرأ سورة {getAyah(lesson.boundaryAyah).surahName} · الآية{' '}
+                {arabicReference(getAyah(lesson.boundaryAyah).ayah)}
               </a>
             </p>
           )}

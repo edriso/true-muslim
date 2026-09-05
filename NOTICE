@@ -1,7 +1,7 @@
 Original application code and editorial lesson text: Zero-Clause BSD (see LICENSE).
 
 Tanzil Quran Text
-Copyright (C) 2007-2021 Tanzil Project
+Copyright (C) 2007-2026 Tanzil Project
 License: Creative Commons Attribution 3.0
 
 This copy of the Quran text is carefully produced, highly
@@ -28,9 +28,13 @@ The corpus itself matches the upstream pinned Tanzil checksum.
 The generated runtime Quran file contains selected complete verses verbatim.
 
 Hadith: short Arabic classical narration excerpts from Sahih al-Bukhari and
-Sahih Muslim, transcribed from individually cited Sunnah.com source pages.
-URLs and inspection date are recorded per narration in data/hadith.json.
-No website translations or commentary are redistributed.
+Sahih Muslim, transcribed from individually cited Sunnah.com source pages and
+collated against the printed critical editions hosted by al-Maktaba al-Shamela
+(Sahih al-Bukhari, al-Tab'a al-Sultaniyya; Sahih Muslim, ed. Muhammad Fu'ad
+Abd al-Baqi). Both source URLs, the كتاب and باب, the narrator and the
+inspection date are recorded per narration in data/hadith.json. Classical
+narration texts are not under copyright; no website translations, commentary,
+or page markup are redistributed.
 
 Cairo Variable and Amiri Quran fonts: SIL Open Font License 1.1.
 Distributed through @fontsource-variable/cairo and @fontsource/amiri-quran.
