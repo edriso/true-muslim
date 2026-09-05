@@ -73,7 +73,7 @@ export default function Home() {
             <h2>أخلاق نتعلّمها ونعيشها</h2>
           </div>
           <p>
-            عشرة أبواب للخير.
+            {lessons.length.toLocaleString('ar')} بابًا للخير.
             <br />
             ابدأ بما تحتاج إليه، وعد متى شئت.
           </p>
@@ -126,6 +126,19 @@ export default function Home() {
             </div>
           </section>
         ))}
+      </section>
+      <section className="container foundation-invitation">
+        <div>
+          <p className="eyebrow">من أين نبدأ؟</p>
+          <h2>بالعدل والإحسان وأداء الأمانة.</h2>
+          <p>
+            آيتان جامعتان في سورة النحل وسورة النساء، نرجع إليهما لفهم ما نفعله
+            من خير وما نجتنبه من أذى.
+          </p>
+        </div>
+        <Link href="/daleel" className="button primary">
+          اقرأ الدليل <ArrowLeft size={18} aria-hidden="true" />
+        </Link>
       </section>
       <section className="closing">
         <div className="container closing-inner">

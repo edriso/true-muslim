@@ -1,4 +1,5 @@
 import { getAyah, getHadith } from '@/lib/content';
+import { arabicReference } from '@/lib/format';
 import { ArrowUpLeft } from 'lucide-react';
 
 export function Ayah({
@@ -34,8 +35,7 @@ export function Hadith({ id }: { id: string }) {
       <blockquote>{record.text}</blockquote>
       <figcaption>
         <a href={record.url}>
-          صحيح {record.collection} ·{' '}
-          {Number(record.number).toLocaleString('ar')}{' '}
+          صحيح {record.collection} · <bdi>{arabicReference(record.number)}</bdi>{' '}
           <ArrowUpLeft size={15} aria-hidden="true" />
         </a>
         <span>

@@ -66,6 +66,15 @@ export default async function LessonPage({ params }: Props) {
           <Ayah reference={lesson.ayah} />
           <Hadith id={lesson.hadith} />
         </section>
+        <section className="article-section avoid-box">
+          <p className="editorial-label">أمثلة لما نجتنبه</p>
+          <h2>ونبتعد عن الأذى</h2>
+          <ul>
+            {lesson.avoid.map((item) => (
+              <li key={item}>{item}</li>
+            ))}
+          </ul>
+        </section>
         <section className="article-section practice-box">
           <p className="eyebrow">تطبيقات مقترحة</p>
           <h2>كيف أبدأ؟</h2>

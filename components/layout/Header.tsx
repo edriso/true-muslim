@@ -14,7 +14,8 @@ export function Header() {
         </Link>
         <nav aria-label="القائمة الرئيسية">
           <Link href="/#virtues">الأخلاق</Link>
-          <Link href="/about">الفكرة والمصادر</Link>
+          <Link href="/daleel">الدليل والمصادر</Link>
+          <Link href="/about">عن الموقع</Link>
         </nav>
       </div>
     </header>
