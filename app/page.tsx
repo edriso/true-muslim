@@ -42,9 +42,9 @@ export default function Home() {
           </div>
           <Ayah reference="68:4" compact />
           <div className="verse-note">
-            هديُ النبي صلى الله عليه وسلم
+            شهادةُ الله لنبيّه صلى الله عليه وسلم
             <br />
-            قدوتنا في حسن الخُلُق.
+            بعظيم الخُلُق.
           </div>
         </div>
       </section>

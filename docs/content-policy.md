@@ -29,7 +29,16 @@ pinned corpus. SHA-256: 7f30c647331a61100ebf24a80507dc0fcdd9f2df97f1312b5b2dfcb9
 Official source and terms: https://tanzil.net/download/ and
 https://tanzil.net/docs/text_license. The build resolves numeric references and emits
 only needed verses. Lessons reference non-opening verses, avoiding prefixed basmala
-ambiguity. The home page uses 68:4. Never write Qur'an in UI prose or lesson fields.
+ambiguity. Never write Qur'an in UI prose or lesson fields.
+
+The home page hero uses 68:4, which is the Qur'an's own testimony about the Prophet's
+خُلُق — the subject of the whole site, and the verse Tafsir al-Sa'di explains by listing
+the very traits these lessons teach. 33:21 (`أُسْوَةٌ حَسَنَةٌ`) was weighed against it and
+placed on `/about` instead: al-Sa'di reads it in its context at the Trench and reports the
+usooli point drawn from it, that the Prophet's *acts* are evidence as his words are, so
+its centre of gravity is following him rather than his character. The caption under a
+displayed verse must state what that verse says — the hero's said `قدوتنا`, which is
+33:21's claim, and now states 68:4's.
 
 ## Hadith
 

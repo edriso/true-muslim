@@ -65,6 +65,22 @@ for (const [path, title, lesson] of [
     assert.ok(html.includes('ليست ميزانًا نحكم به على أحد'));
     assert.ok(!html.includes('NaN'), 'Invalid reference number');
   }
+  if (path === '/about') {
+    // Both verses this page reasons from, exactly as the corpus has them.
+    for (const ref of ['2:285', '33:21'])
+      assert.ok(
+        html.includes(verses[ref].text),
+        `Missing verse ${ref} on /about`,
+      );
+  }
+  if (path === '/') {
+    assert.ok(html.includes(verses['68:4'].text), 'Missing the hero verse');
+    // The caption has to describe the verse shown, not a different one.
+    assert.ok(
+      !html.includes('قدوتنا في حسن الخُلُق'),
+      'Hero caption claims 33:21',
+    );
+  }
   if (path === '/daleel') {
     for (const { reference, tafsir } of guide.foundations) {
       assert.ok(
