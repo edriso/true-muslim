@@ -1,9 +1,11 @@
 {
   "categories": [
     "مع الله",
+    "مع النفس",
+    "مع اللسان",
     "مع الناس",
     "مع الأهل",
-    "مع النفس",
+    "مع المال والعمل",
     "مع ما حولنا"
   ],
   "foundations": [
@@ -15,7 +17,8 @@
       "lessons": [
         "justice",
         "excellence",
-        "kinship"
+        "kinship",
+        "no-harm"
       ]
     },
     {
@@ -25,7 +28,9 @@
       "tafsir": "https://quran.ksu.edu.sa/tafseer/saadi/sura4-aya58.html",
       "lessons": [
         "trust",
-        "justice"
+        "justice",
+        "work-trust",
+        "wages"
       ]
     },
     {
@@ -36,12 +41,55 @@
       "lessons": [
         "promises",
         "generosity",
-        "patience"
+        "patience",
+        "prayer"
+      ]
+    },
+    {
+      "reference": "4:36",
+      "title": "عبادةُ الله، ثم حقوقٌ للأقرب فالأقرب",
+      "summary": "تبدأ الآية بإفراد الله بالعبادة والنهي عن الشرك، ثم تُرتّب حقوق الناس على قدر قربهم: الوالدان، ثم ذوو القربى، ثم اليتامى والمساكين، ثم الجار القريب والجار البعيد، ثم الصاحب وابن السبيل ومن تحت أيدينا. وتُختم بذمّ المختال الفخور؛ فأداء هذه الحقوق تواضعٌ، ومنعُها كِبْر.",
+      "tafsir": "https://quran.ksu.edu.sa/tafseer/saadi/sura4-aya36.html",
+      "lessons": [
+        "tawhid",
+        "parents",
+        "kinship",
+        "the-needy",
+        "neighbors",
+        "guests",
+        "household"
+      ]
+    },
+    {
+      "reference": "6:151",
+      "title": "حدودٌ نقف عندها",
+      "summary": "تجمع الآية أوائل ما حرّم الله: الشرك به، وعقوق الوالدين، وقتل الأولاد، وقربان الفواحش ظاهرها وباطنها، وقتل النفس بغير حقّ. والنهي عن «قربان» الفاحشة أوسع من النهي عن فعلها، فيدخل فيه ما يوصل إليها. فمعرفة ما نجتنبه أصلٌ في الدين كمعرفة ما نفعله.",
+      "tafsir": "https://quran.ksu.edu.sa/tafseer/saadi/sura6-aya151.html",
+      "lessons": [
+        "tawhid",
+        "major-sins",
+        "chastity",
+        "sanctity",
+        "parents"
+      ]
+    },
+    {
+      "reference": "49:12",
+      "title": "ظنٌّ يُجتنب، وسِترٌ يُحفظ",
+      "summary": "تنهى الآية عن كثيرٍ من الظنّ، وعن التجسّس، وعن الغيبة، وتُشبّه أكلَ أعراض الناس بأكل لحم الميت تنفيرًا منه. وتُختم بأن الله توّاب رحيم؛ فالباب مفتوح لمن أخطأ ثم رجع.",
+      "tafsir": "https://quran.ksu.edu.sa/tafseer/saadi/sura49-aya12.html",
+      "lessons": [
+        "good-suspicion",
+        "backbiting",
+        "gossip",
+        "mockery",
+        "permission"
       ]
     }
   ],
   "pageReferences": [
     "68:4",
-    "2:285"
+    "2:285",
+    "16:90"
   ]
 }
