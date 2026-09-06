@@ -2,7 +2,13 @@ import type { Metadata } from 'next';
 import Link from 'next/link';
 import { notFound } from 'next/navigation';
 import { ArrowLeft, ArrowRight } from 'lucide-react';
-import { lessons, getLesson, getAyah, getHadith } from '@/lib/content';
+import {
+  categories,
+  lessons,
+  getLesson,
+  getAyah,
+  getHadith,
+} from '@/lib/content';
 import { Ayah, Hadith } from '@/components/content/Evidence';
 import { arabicOrdinal, arabicReference } from '@/lib/format';
 type Props = { params: Promise<{ slug: string }> };
@@ -24,26 +30,9 @@ export default async function LessonPage({ params }: Props) {
     next = lessons[index + 1];
   const narration = getHadith(lesson.hadith);
   return (
+    /* The index follows the article in the DOM and is placed first visually, so
+       the skip link and a screen reader reach the lesson before 73 links. */
     <main id="main" tabIndex={-1} className="container reading-shell">
-      <aside className="lesson-sidebar">
-        <details className="lesson-index" open>
-          <summary>
-            <span className="eyebrow">أبواب الأخلاق</span>
-          </summary>
-          <nav aria-label="كل الدروس">
-            {lessons.map((l) => (
-              <Link
-                key={l.slug}
-                href={`/virtues/${l.slug}`}
-                aria-current={l.slug === lesson.slug ? 'page' : undefined}
-              >
-                <span>{arabicOrdinal(l.order)}</span>
-                {l.title}
-              </Link>
-            ))}
-          </nav>
-        </details>
-      </aside>
       <article>
         <nav className="breadcrumbs" aria-label="مسار الصفحة">
           <Link href="/">الرئيسية</Link>
@@ -147,6 +136,34 @@ export default async function LessonPage({ params }: Props) {
           )}
         </nav>
       </article>
+      <aside className="lesson-sidebar">
+        <details className="lesson-index" open>
+          <summary>
+            <span className="eyebrow">أبواب الأخلاق</span>
+          </summary>
+          <nav aria-label="كل الدروس">
+            {/* One group per category, and only the reader's own category is
+                open, so the current lesson is visible without scrolling. */}
+            {categories.map((category) => (
+              <details key={category} open={category === lesson.category}>
+                <summary className="sidebar-group">{category}</summary>
+                {lessons
+                  .filter((l) => l.category === category)
+                  .map((l) => (
+                    <Link
+                      key={l.slug}
+                      href={`/virtues/${l.slug}`}
+                      aria-current={l.slug === lesson.slug ? 'page' : undefined}
+                    >
+                      <span>{arabicOrdinal(l.order)}</span>
+                      {l.title}
+                    </Link>
+                  ))}
+              </details>
+            ))}
+          </nav>
+        </details>
+      </aside>
     </main>
   );
 }

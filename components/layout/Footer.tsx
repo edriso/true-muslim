@@ -10,6 +10,7 @@ export function Footer() {
           <p>دعوة إلى إصلاح النفس، لا حكم على إيمان أحد.</p>
         </div>
         <div className="footer-links">
+          <Link href="/mujtanabat">ما نجتنبه</Link>
           <Link href="/daleel">الدليل والمصادر</Link>
           <Link href="/about">عن الموقع</Link>
           <a href="https://github.com/edriso/true-muslim/issues">أبلغ عن خطأ</a>

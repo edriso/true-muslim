@@ -356,7 +356,7 @@ h1 span {
 }
 .method-inner {
   display: grid;
-  grid-template-columns: repeat(3, 1fr);
+  grid-template-columns: repeat(4, 1fr);
   padding-block: 24px;
   gap: 28px;
 }
@@ -551,7 +551,10 @@ h1 span {
   align-items: start;
   padding-block: 34px 70px;
 }
+/* The index follows the article in the DOM for keyboard and screen-reader
+   order, and is ordered back into the first column for sighted readers. */
 .lesson-sidebar {
+  order: -1;
   position: sticky;
   top: 25px;
   max-height: calc(100svh - 50px);
@@ -581,6 +584,43 @@ h1 span {
 .lesson-sidebar nav {
   flex-direction: column;
   gap: 3px;
+}
+/* The index is long enough that it needs its own grouping. */
+.lesson-sidebar nav details {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+.sidebar-group {
+  font-family: var(--font-display);
+  font-size: 0.8rem;
+  color: var(--muted);
+  margin: 12px 0 3px;
+  padding: 6px 13px;
+  border-top: 1px solid var(--line);
+  padding-top: 14px;
+  cursor: pointer;
+  min-height: 44px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  list-style: none;
+}
+.sidebar-group::-webkit-details-marker {
+  display: none;
+}
+.sidebar-group::after {
+  content: '⌄';
+  margin-inline-start: auto;
+  color: var(--green);
+}
+.lesson-sidebar nav details[open] > .sidebar-group::after {
+  content: '⌃';
+}
+.lesson-sidebar nav details:first-of-type > .sidebar-group {
+  margin-top: 0;
+  padding-top: 6px;
+  border-top: 0;
 }
 .lesson-sidebar a {
   padding: 7px 13px;
@@ -766,10 +806,16 @@ h1 span {
     gap: 12px;
   }
   .method-inner {
-    gap: 15px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 15px 24px;
   }
   .method-inner > div + div {
     padding-inline-start: 15px;
+  }
+  /* Two columns: only the second cell of each row keeps a divider. */
+  .method-inner > div:nth-child(odd) {
+    border-inline-start: 0;
+    padding-inline-start: 0;
   }
 }
 @media (max-width: 620px) {
@@ -887,7 +933,8 @@ h1 span {
     gap: 10px 20px;
   }
   .reading-shell {
-    display: block;
+    display: flex;
+    flex-direction: column;
     padding-top: 18px;
   }
   .lesson-sidebar {
@@ -1178,6 +1225,17 @@ h1 span {
   text-decoration: underline;
   text-decoration-style: dotted;
   text-underline-offset: 5px;
+}
+.avoid-list {
+  margin: 12px 0 0;
+  padding-inline-start: 22px;
+}
+.avoid-list li {
+  margin-block: 8px;
+  padding-inline-start: 6px;
+}
+.avoid-list li::marker {
+  color: var(--muted);
 }
 .limits-panel ul {
   padding-inline-start: 24px;

@@ -1,5 +1,11 @@
 import Link from 'next/link';
-import { ArrowLeft, BookOpen, HeartHandshake, Sprout } from 'lucide-react';
+import {
+  ArrowLeft,
+  BookOpen,
+  HeartHandshake,
+  ShieldBan,
+  Sprout,
+} from 'lucide-react';
 import { Ayah } from '@/components/content/Evidence';
 import { lessons, categories, foundations } from '@/lib/content';
 import { arabicOrdinal, arabicReference } from '@/lib/format';
@@ -17,12 +23,12 @@ export default function Home() {
             <span>يظهر في أخلاقنا.</span>
           </h1>
           <p className="lead">
-            نتعلّم ما يحبّه الله من الأخلاق، ونجتهد في أن نعيشه في كلماتنا ومواقفنا
-            ومعاملتنا للناس.
+            نتعلّم ما يحبّه الله من الأخلاق وما نهى عنه من الأذى، ونجتهد في أن نعيش
+            ذلك في كلماتنا ومواقفنا ومعاملتنا للناس.
           </p>
           <div className="intro-actions">
-            <Link className="button primary" href="/virtues/sincerity">
-              ابدأ بالإخلاص <ArrowLeft size={19} aria-hidden="true" />
+            <Link className="button primary" href="/virtues/tawhid">
+              ابدأ بالتوحيد <ArrowLeft size={19} aria-hidden="true" />
             </Link>
             <a className="text-link" href="#virtues">
               تصفّح الأخلاق
@@ -63,6 +69,13 @@ export default function Home() {
             <p>
               <strong>ابدأ بعمل</strong>
               <span>خطوة صغيرة صادقة</span>
+            </p>
+          </div>
+          <div>
+            <ShieldBan aria-hidden="true" />
+            <p>
+              <strong>اترك الأذى</strong>
+              <span>وتركُه عملٌ يُؤجر عليه</span>
             </p>
           </div>
         </div>
@@ -132,6 +145,12 @@ export default function Home() {
             {arabicReference(foundations.length)} آيات جامعة نرجع إليها لفهم ما
             نفعله من خير وما نجتنبه من أذى، ولنتذكّر أن حسن الخُلُق لا يقوم إلا مع
             الإيمان والصلاة.
+          </p>
+          <p>
+            <Link className="text-link" href="/mujtanabat">
+              وتصفّح ما نجتنبه مجموعًا في صفحة واحدة{' '}
+              <ArrowLeft size={18} aria-hidden="true" />
+            </Link>
           </p>
         </div>
         <Link href="/daleel" className="button primary">
