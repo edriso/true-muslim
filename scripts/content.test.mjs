@@ -210,3 +210,41 @@ test('the layout preloads every face the reader waits on', () => {
   assert.match(layout, /crossOrigin="anonymous"/u);
   assert.match(layout, /rel="preload"/u);
 });
+
+// A client-side navigation keeps the window's scroll offset, and the router's own
+// focus call settles the page below the header rather than at its top. Measured in
+// a browser over the DevTools protocol; these assertions only keep the mechanism
+// wired up, since a scroll offset cannot be seen from the rendered HTML.
+test('a route change is corrected back to the top of the page', () => {
+  const layout = readFileSync('app/layout.tsx', 'utf8');
+  assert.match(
+    layout,
+    /<ScrollToTop \/>/u,
+    'the layout does not mount ScrollToTop',
+  );
+  const component = readFileSync('components/layout/ScrollToTop.tsx', 'utf8');
+  assert.match(component, /^'use client';/u);
+  assert.match(
+    component,
+    /usePathname\(\)/u,
+    'nothing triggers it on a route change',
+  );
+  // The router focuses <main> a microtask later, which scrolls it into view, so a
+  // single correction is not enough.
+  assert.match(
+    component,
+    /requestAnimationFrame/u,
+    'the second correction is gone',
+  );
+  assert.match(
+    component,
+    /behavior: 'instant'/u,
+    'the smooth rule would animate this',
+  );
+  // A fragment link asks for an element, not for the top.
+  assert.match(
+    component,
+    /window\.location\.hash/u,
+    'fragment links are not spared',
+  );
+});

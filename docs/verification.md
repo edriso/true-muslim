@@ -72,6 +72,18 @@ adding 49 lessons and 48 narrations. Everything below was run, not assumed.
   was the signal, and the fix was the verse rather than the caption. The hero's verse type
   scale came down from a display size to roughly the in-page verse size, because 139
   characters do not sit in an arch built for four words.
+- **A route change now lands at the top of the page.** Following a link from the foot of
+  a long page left the reader at the foot of the next one, and sometimes part way down it
+  — measured in a browser: `/virtues/road-harm` at y=1933 to `/about` landed at y=1949,
+  and `/about` at y=1983 to `/mujtanabat` landed at y=15518. The router does scroll, but
+  it then calls `focus()` on the new `<main>` for screen readers, and focusing an element
+  scrolls it into view, so every navigation settled at y=99 — `<main>`'s top, with the
+  header pushed off screen. That focus lands in a microtask after a layout effect, so one
+  correction is not enough; `components/layout/ScrollToTop.tsx` scrolls on the route
+  change and again on the next animation frame, both `instant` so the smooth rule is not
+  turned into an animation. All four measured navigations now land at exactly 0, and
+  same-page anchors, cross-page fragments and back-button restoration were re-measured
+  and still behave.
 - **The reading faces no longer change under the reader.** Fontsource ships
   `font-display: swap`, so every load painted the page in a system fallback and then
   re-rendered it in Naskh and Cairo — a visible family change and a reflow on each
@@ -201,10 +213,13 @@ adding 49 lessons and 48 narrations. Everything below was run, not assumed.
   every record they produced was then re-verified mechanically by `verify:sources`
   against the same pages, and every editorial decision above was made by hand. Several
   of their findings corrected the brief they were given.
-- No browser automation was available. There are no screenshots, and no real keyboard,
-  screen-reader, mobile-browser or 200% zoom session was run against the new page or the
-  now much longer lesson index. Its responsive, focus and dark-scheme rules are reasoned
-  about, not seen. A human should look at the site in a browser before wide release.
+- **Some browser behaviour is now measured rather than reasoned about.** The scroll work
+  above was done by driving a local Chrome over the DevTools protocol from a script with
+  no added dependencies, reading `window.scrollY` across real navigations. That covers
+  scroll position only. There are still no screenshots, and no real keyboard,
+  screen-reader, mobile-browser or 200% zoom session: the responsive, focus and
+  dark-scheme rules remain reasoned about, not seen. A human should look at the site in a
+  browser before wide release.
 - `npm run verify:sources` depends on shamela.ws staying reachable and keeping its page
   ids. If it starts failing wholesale, check the site before the data.
 - No sitemap or canonical URLs are emitted yet. `metadataBase` plus `app/sitemap.ts` and

@@ -59,7 +59,10 @@ before changing the app or build pipeline. These rules apply to agents and human
   dev and silently returns Latin digits on the Workers runtime, which has no Arabic
   locale data.
 - Do not add packages without a concrete need. Preserve the lockfile. Document setup.
-- Keep the site functional without JavaScript for reading and navigation.
+- Keep the site functional without JavaScript for reading and navigation. The one client
+  component in the reading path, `ScrollToTop`, exists because client-side navigation
+  keeps the scroll offset and the router's focus call settles the page below the header;
+  without JavaScript a navigation is a full page load, which starts at the top anyway.
 - Add third-party asset/data licenses to NOTICE. Preserve Tanzil attribution.
 
 ## Delivery

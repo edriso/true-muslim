@@ -11,6 +11,7 @@ import naskhArabic from '@fontsource-variable/noto-naskh-arabic/files/noto-naskh
 import cairoArabic from '@fontsource-variable/cairo/files/cairo-arabic-wght-normal.woff2?url';
 import amiriQuranArabic from '@fontsource/amiri-quran/files/amiri-quran-arabic-400-normal.woff2?url';
 import { Header } from '@/components/layout/Header';
+import { ScrollToTop } from '@/components/layout/ScrollToTop';
 import { Footer } from '@/components/layout/Footer';
 const DESCRIPTION =
   'دليل عربي ميسّر لأخلاق الإسلام: نفهم المعنى، ونقرأ الدليل من القرآن والسنة، ونتدرّب على العمل في حياتنا.';
@@ -54,6 +55,7 @@ export default function RootLayout({
             crossOrigin="anonymous"
           />
         ))}
+        <ScrollToTop />
         <a className="skip-link" href="#main">
           انتقل إلى المحتوى
         </a>
