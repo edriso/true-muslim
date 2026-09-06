@@ -33,6 +33,18 @@ for (const [path, title, lesson] of [
     html.includes('aria-label="روابط الموقع"'),
     `No footer nav on ${path}`,
   );
+  // The reading faces block rather than swap, so every page has to preload them or
+  // the block period becomes a visibly blank one.
+  for (const face of [
+    'noto-naskh-arabic-arabic',
+    'cairo-arabic',
+    'amiri-quran-arabic',
+  ])
+    assert.match(
+      html,
+      new RegExp(`<link[^>]*rel="preload"[^>]*${face}[^>]*as="font"`),
+      `${face} is not preloaded on ${path}`,
+    );
   for (const href of ['/about', '/daleel', '/mujtanabat'])
     assert.ok(
       html.includes(`href="${base}${href}"`),

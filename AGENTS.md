@@ -43,10 +43,16 @@ before changing the app or build pipeline. These rules apply to agents and human
 - Prefer server-rendered reading pages; client JavaScript only for real interactions.
 - No backend, accounts, tracking, third-party font calls, or secrets in the client.
 - Keep Arabic RTL throughout. Use logical CSS; never letter-space Arabic. Quran uses
-  Amiri Quran, normal weight, line-height at least 2.5, and font-display: block so a
-  fallback never drops a waqf mark. Never clip diacritics. Body text is Naskh
-  (Noto Naskh Arabic, which caps at weight 700); Cairo is for headings only, where
-  its heavier weights are what its foundry designed for display.
+  Amiri Quran, normal weight, line-height at least 2.5. Never clip diacritics. Body text
+  is Naskh (Noto Naskh Arabic, which caps at weight 700); Cairo is for headings only,
+  where its heavier weights are what its foundry designed for display.
+- All three Arabic faces are `font-display: block`, overriding the `swap` Fontsource
+  ships: swap paints the page in a system fallback and re-renders it, which changes the
+  face and the metrics under the reader, and can drop a waqf mark from revelation. The
+  layout preloads exactly those three files so the block period is a cached same-origin
+  fetch rather than a blank page. Keep both halves — a blocking face that is not
+  preloaded is worse than swapping. Only the Arabic subsets are overridden; latin, math
+  and symbol subsets keep swap, so an incidental character never holds up the page.
 - Semantic headings, visible focus, a skip link, readable contrast, 44px controls,
   keyboard access, narrow screens, and 200% zoom are requirements.
 - Render every number through `lib/format.ts`. `toLocaleString('ar')` looks right in

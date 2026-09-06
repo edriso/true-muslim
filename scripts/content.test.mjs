@@ -149,3 +149,64 @@ test('every narration record survives folding as non-empty Arabic', () => {
     assert.ok(fold(record.chapter).startsWith('باب'), id);
   }
 });
+
+// A `swap` face paints the page in a system fallback and then re-renders it in the
+// real one — the family change a reader sees on reload. The reading faces block
+// instead, and the layout preloads them so the block period is a cached fetch.
+test('the Arabic reading faces block instead of swapping', () => {
+  const css = readFileSync('app/globals.css', 'utf8');
+  const faces = [...css.matchAll(/@font-face\s*\{([^}]*)\}/g)].map((m) => m[1]);
+  const blocking = faces.filter((f) => /font-display:\s*block/u.test(f));
+  for (const family of [
+    'Noto Naskh Arabic Variable',
+    'Cairo Variable',
+    'Amiri Quran',
+  ])
+    assert.ok(
+      blocking.some((face) => face.includes(family)),
+      `${family} may not swap: a fallback paint changes the face under the reader`,
+    );
+  // The overrides cover only the Arabic subset, so each has to carry the range its
+  // package ships. A Fontsource update that widened or narrowed it would silently
+  // leave characters back on the swapping face. Compared as sets, because the
+  // formatter rewraps the range and the order is not meaningful.
+  const ranges = (face) =>
+    (/unicode-range:\s*([^;]+);/u.exec(face)?.[1] ?? '')
+      .split(',')
+      .map((part) => part.trim().toUpperCase())
+      .filter(Boolean)
+      .sort();
+  for (const [pkg, subset] of [
+    [
+      '@fontsource-variable/noto-naskh-arabic/wght.css',
+      'noto-naskh-arabic-arabic',
+    ],
+    ['@fontsource-variable/cairo/wght.css', 'cairo-arabic'],
+  ]) {
+    const shipped = readFileSync(`node_modules/${pkg}`, 'utf8').split(
+      `${subset}-wght-normal */`,
+    )[1];
+    const ours = blocking.find((face) =>
+      face.includes(`${subset}-wght-normal.woff2`),
+    );
+    assert.ok(ours, `no blocking face for ${subset}`);
+    assert.deepEqual(
+      ranges(ours),
+      ranges(shipped),
+      `${subset} subset range drifted from its package`,
+    );
+  }
+});
+test('the layout preloads every face the reader waits on', () => {
+  const layout = readFileSync('app/layout.tsx', 'utf8');
+  for (const subset of [
+    'noto-naskh-arabic-arabic-wght-normal.woff2',
+    'cairo-arabic-wght-normal.woff2',
+    'amiri-quran-arabic-400-normal.woff2',
+  ])
+    assert.ok(layout.includes(`${subset}?url`), `${subset} is not preloaded`);
+  // Font fetches are CORS-mode even same-origin; without this the preload is
+  // discarded and the file is fetched a second time.
+  assert.match(layout, /crossOrigin="anonymous"/u);
+  assert.match(layout, /rel="preload"/u);
+});

@@ -62,6 +62,16 @@ adding 49 lessons and 48 narrations. Everything below was run, not assumed.
   `false-witness`. They now explain in the site's own words, or attribute plainly to the
   Prophet ﷺ what the narration says. The longest remaining overlap between any lesson's
   prose and its narration is the honorific phrase itself.
+- **The reading faces no longer change under the reader.** Fontsource ships
+  `font-display: swap`, so every load painted the page in a system fallback and then
+  re-rendered it in Naskh and Cairo — a visible family change and a reflow on each
+  refresh. Amiri Quran was already overridden to `block` for revelation; Naskh and Cairo
+  now are too, for their Arabic subsets only, declared after the imports so they win.
+  The layout preloads those three files (91 KB, 30 KB and 44 KB, immutably cached), so
+  the block period is a same-origin fetch and, on the refresh case that prompted this,
+  a cache hit. Latin, math and symbol subsets keep `swap`. Two tests guard it: one that
+  the three faces block and that the overridden subset ranges still match what the
+  packages ship, and one that every route preloads all three.
 - **The header now carries only the three reading destinations**, and the footer carries
   the whole map. `عن الموقع` moved out of the header: four items wrapped to two lines on a
   narrow screen, and the page about the site is not a reading destination. Nothing became
