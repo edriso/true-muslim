@@ -31,14 +31,17 @@ https://tanzil.net/docs/text_license. The build resolves numeric references and 
 only needed verses. Lessons reference non-opening verses, avoiding prefixed basmala
 ambiguity. Never write Qur'an in UI prose or lesson fields.
 
-The home page hero uses 68:4, which is the Qur'an's own testimony about the Prophet's
-خُلُق — the subject of the whole site, and the verse Tafsir al-Sa'di explains by listing
-the very traits these lessons teach. 33:21 (`أُسْوَةٌ حَسَنَةٌ`) was weighed against it and
-placed on `/about` instead: al-Sa'di reads it in its context at the Trench and reports the
-usooli point drawn from it, that the Prophet's *acts* are evidence as his words are, so
-its centre of gravity is following him rather than his character. The caption under a
-displayed verse must state what that verse says — the hero's said `قدوتنا`, which is
-33:21's claim, and now states 68:4's.
+The home page hero uses 33:21 (`أُسْوَةٌ حَسَنَةٌ`). The site's name is an aspiration to
+become something, and the hero speaks to the reader all the way down — «يظهر في أخلاقنا»،
+«نتعلّم»، «ابدأ» — so the verse that fronts it is the one addressed to the reader
+(`لَكُمْ`), naming the example to follow and conditioning it on hoping in Allah and the
+Last Day and remembering Him much, which is the same reason this guide never presents
+character apart from worship. 68:4 was weighed against it and moved to `/about`: it is the
+Qur'an's testimony about the Prophet's خُلُق, and Tafsir al-Sa'di explains it by listing
+the very traits these lessons teach, but it is addressed to the Prophet about the Prophet.
+It answers what he was like, where the hero has to answer what the reader is asked to do.
+A caption beside a verse must claim only what that verse licenses: `قدوتنا` is 33:21's to
+give, and it now sits under 33:21.
 
 ## Hadith
 

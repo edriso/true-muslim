@@ -62,13 +62,16 @@ adding 49 lessons and 48 narrations. Everything below was run, not assumed.
   `false-witness`. They now explain in the site's own words, or attribute plainly to the
   Prophet ﷺ what the narration says. The longest remaining overlap between any lesson's
   prose and its narration is the honorific phrase itself.
-- **The home page's verse was re-weighed against 33:21 and kept.** 68:4 is the Qur'an's
-  testimony about the Prophet's خُلُق, which is the site's whole subject, and Tafsir
-  al-Sa'di explains it by listing the traits these lessons teach. 33:21 is read there in
-  its context at the Trench, and the point drawn from it is that his acts are evidence as
-  his words are — following him rather than his character. It now sits on `/about`, where
-  the site explains why it follows him. The hero's caption was the real defect: it said
-  `قدوتنا`, which is 33:21's claim, under 68:4's text, and now states what 68:4 says.
+- **The home page's verse is now 33:21, and 68:4 moved to `/about`.** The hero addresses
+  the reader in every line and the site's name is an aspiration to become something, so
+  the verse fronting it is the one addressed to the reader and naming the example to
+  follow. 68:4 is the Qur'an's testimony about the Prophet's خُلُق — Tafsir al-Sa'di
+  explains it by listing the traits these lessons teach — but it speaks about him rather
+  than to the reader, so it answers what he was like and now does that on `/about`. The
+  caption `قدوتنا` had been sitting under 68:4, which does not license it; that mismatch
+  was the signal, and the fix was the verse rather than the caption. The hero's verse type
+  scale came down from a display size to roughly the in-page verse size, because 139
+  characters do not sit in an arch built for four words.
 - **The reading faces no longer change under the reader.** Fontsource ships
   `font-display: swap`, so every load painted the page in a system fallback and then
   re-rendered it in Naskh and Cairo — a visible family change and a reflow on each

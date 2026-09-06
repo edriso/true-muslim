@@ -40,11 +40,11 @@ export default function Home() {
           <div className="ornament" aria-hidden="true">
             ✦
           </div>
-          <Ayah reference="68:4" compact />
+          <Ayah reference="33:21" compact />
           <div className="verse-note">
-            شهادةُ الله لنبيّه صلى الله عليه وسلم
+            هديُ النبي صلى الله عليه وسلم
             <br />
-            بعظيم الخُلُق.
+            قدوتنا فيما نعمل ونترك.
           </div>
         </div>
       </section>

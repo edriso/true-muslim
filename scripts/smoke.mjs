@@ -67,18 +67,19 @@ for (const [path, title, lesson] of [
   }
   if (path === '/about') {
     // Both verses this page reasons from, exactly as the corpus has them.
-    for (const ref of ['2:285', '33:21'])
+    for (const ref of ['2:285', '68:4'])
       assert.ok(
         html.includes(verses[ref].text),
         `Missing verse ${ref} on /about`,
       );
   }
   if (path === '/') {
-    assert.ok(html.includes(verses['68:4'].text), 'Missing the hero verse');
-    // The caption has to describe the verse shown, not a different one.
+    // The hero names the example the reader is asked to follow, which is what the
+    // caption beside it claims. 68:4 testifies to his character and sits on /about.
+    assert.ok(html.includes(verses['33:21'].text), 'Missing the hero verse');
     assert.ok(
-      !html.includes('قدوتنا في حسن الخُلُق'),
-      'Hero caption claims 33:21',
+      !html.includes(verses['68:4'].text),
+      'The hero page should not also carry 68:4',
     );
   }
   if (path === '/daleel') {
