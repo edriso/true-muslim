@@ -12,11 +12,13 @@ export function Header() {
             مسلم بحق <span className="brand-sub">إيمان يثمر خُلُقًا</span>
           </span>
         </Link>
+        {/* Only the three reading destinations. Everything about the site
+            itself lives in the footer, so this row still fits one line on a
+            narrow screen and at 200% zoom. */}
         <nav aria-label="القائمة الرئيسية">
           <Link href="/#virtues">الأخلاق</Link>
           <Link href="/mujtanabat">ما نجتنبه</Link>
           <Link href="/daleel">الدليل والمصادر</Link>
-          <Link href="/about">عن الموقع</Link>
         </nav>
       </div>
     </header>

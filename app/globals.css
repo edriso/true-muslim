@@ -522,6 +522,9 @@ h1 span {
 .footer-brand {
   font-size: 1.3rem;
   font-weight: 700;
+  display: inline-flex;
+  align-items: center;
+  min-height: 44px;
 }
 .footer-inner p {
   font-size: 0.85rem;
@@ -540,6 +543,7 @@ h1 span {
   min-height: 44px;
   display: inline-flex;
   align-items: center;
+  font-size: inherit;
 }
 .footer-links a:hover {
   text-decoration: underline;

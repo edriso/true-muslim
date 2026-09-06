@@ -62,6 +62,13 @@ adding 49 lessons and 48 narrations. Everything below was run, not assumed.
   `false-witness`. They now explain in the site's own words, or attribute plainly to the
   Prophet ﷺ what the narration says. The longest remaining overlap between any lesson's
   prose and its narration is the honorific phrase itself.
+- **The header now carries only the three reading destinations**, and the footer carries
+  the whole map. `عن الموقع` moved out of the header: four items wrapped to two lines on a
+  narrow screen, and the page about the site is not a reading destination. Nothing became
+  unreachable — the footer is a `<nav>` with its own accessible name and lists every page,
+  and `/about` is still linked from the home page's closing section. `scripts/smoke.mjs`
+  now asserts both navigation landmarks and all three internal destinations on every
+  route, so the split cannot silently become a dead end.
 - **The lesson index was restructured for its new size.** 75 links in a sticky box
   meant the reader's own lesson was usually below the fold, and the skip link landed a
   keyboard user in front of all of them. The index now follows the article in the DOM
@@ -100,6 +107,12 @@ adding 49 lessons and 48 narrations. Everything below was run, not assumed.
   contiguous from 1, and no narration record that no lesson cites.
 - `npm run verify:sources`: all 74 narrations match their printed editions — under the
   repaired comparison, which is the first run of this tool that actually read the Arabic.
+- A static accessibility audit was run against all 79 rendered routes: exactly one `h1`
+  each, no heading level skipped, every `nav` landmark separately named, no link without
+  an accessible name, every decorative `svg` hidden, no duplicate `id`, and every
+  `aria-labelledby` and same-page fragment resolving to an element that exists. Clean.
+  Every interactive element kind was checked against the 44px rule; `.footer-brand` was
+  the one target under it at 1.3rem, and now sets its own minimum.
 - Glyph coverage was recomputed by parsing the shipped woff2 files with fontTools:
   Noto Naskh Arabic covers every codepoint in the lesson prose and the narrations,
   Cairo covers every title, category and Arabic-Indic ordinal, and Amiri Quran covers

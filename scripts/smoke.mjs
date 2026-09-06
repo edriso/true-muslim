@@ -1,6 +1,8 @@
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 const origin = process.env.TEST_ORIGIN || 'http://localhost:3000';
+// The Pages export prefixes every internal URL; the Worker build does not.
+const base = process.env.TEST_BASE_PATH ?? '';
 const lessons = JSON.parse(
   readFileSync('content/lessons.generated.json', 'utf8'),
 );
@@ -21,6 +23,21 @@ for (const [path, title, lesson] of [
   assert.match(html, /dir="rtl"/);
   assert.ok(html.includes(title), `Missing title on ${path}`);
   assert.ok(html.includes('id="main"'), `Missing main target on ${path}`);
+  // Two navigation landmarks with distinct names, and every destination
+  // reachable from the footer even when the header does not carry it.
+  assert.ok(
+    html.includes('aria-label="القائمة الرئيسية"'),
+    `No header nav on ${path}`,
+  );
+  assert.ok(
+    html.includes('aria-label="روابط الموقع"'),
+    `No footer nav on ${path}`,
+  );
+  for (const href of ['/about', '/daleel', '/mujtanabat'])
+    assert.ok(
+      html.includes(`href="${base}${href}"`),
+      `Not reachable from ${path}: ${href}`,
+    );
   if (path === '/mujtanabat') {
     // The page is the only place the whole avoid list is gathered, so every
     // lesson and every one of its examples has to reach it.
