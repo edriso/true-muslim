@@ -9,9 +9,18 @@ alongside worship; it does not replace learning obligatory worship or asking sch
 ## Lesson contract
 
 Each JSON lesson includes slug, title, summary, category, meaning, ayah reference,
-hadith ID, three suggested actions, a realistic scenario, reflection question, and
-one boundary preventing a common misunderstanding. Activities are suggestions, not
-religiously prescribed counts or routines. Order is explicit and stable.
+hadith ID, three suggested actions, at least two concrete examples of what to avoid,
+a realistic scenario, reflection question, and one boundary preventing a common
+misunderstanding. Activities are suggestions, not religiously prescribed counts or
+routines. Order is explicit, contiguous from 1, and stable; the URL of an existing
+lesson never changes even when the reading order improves. `content/guide.json` owns
+the categories, and a category with no lesson fails the build, as does a narration
+record no lesson cites.
+
+A lesson may teach something to refuse rather than something to do. Those lessons take
+the same shape: the meaning explains the harm, the actions are steps away from it, and
+the boundary says that the warning is about the act and never a verdict on a person.
+Where the evidence carries a threat, the boundary says so explicitly.
 
 ## Qur'an
 
@@ -24,19 +33,33 @@ ambiguity. The home page uses 68:4. Never write Qur'an in UI prose or lesson fie
 
 ## Hadith
 
-Use exact short excerpts from inspected pages of Sahih al-Bukhari or Sahih Muslim on
-Sunnah.com. Store the source URL, collection, number, narrator, honorific, كتاب, باب,
-printed edition, printed-edition URL, excerpt flag, inspection date, and exact text in
+Use exact short excerpts from Sahih al-Bukhari or Sahih Muslim, and from nothing else.
+Store the source URL, collection, number, narrator, honorific, كتاب, باب, printed
+edition, printed-edition URL, excerpt flag, inspection date, and exact text in
 data/hadith.json. Collection membership supports the label صحيح; do not invent a
 separate grading attribution. The source manifest protects record bytes from unreviewed
 changes. Recheck wording, attribution, and context before intentionally updating its
 digest. Do not copy website commentary or translations.
 
-Every record is also collated against the printed critical edition of its own
-collection, which is the authority for wording, narrator, number and placement:
+The wording, narrator, number, كتاب and باب are read off the page of the printed
+critical edition, which is the authority for all of them. The Sunnah.com URL is the
+reader-facing link, and its number must be the printed number. On 2026-09-06 Sunnah.com
+answered 403 to every request from the machine this work ran on, including through a
+rendering fetcher, so the printed page is what a contributor inspects; never describe a
+Sunnah.com page as inspected unless it actually was.
+
+The two editions:
 
 - Sahih al-Bukhari — الطبعة السلطانية, https://shamela.ws/book/1681
 - Sahih Muslim — تحقيق محمد فؤاد عبد الباقي, https://shamela.ws/book/1727
+
+`npm run verify:sources` folds Arabic through `scripts/arabic.mjs` before comparing. Keep
+the mark ranges there as explicit escapes: written with the characters themselves the class
+parses as U+0610-U+064B, which contains every Arabic letter, so every comparison silently
+becomes one empty string inside another. `npm run test` guards this. And remember what a
+green run does not cover: it finds the text *somewhere* on the page, so it cannot tell you
+that a span stays inside one narration, that `excerpt` is right, or that an `attribution`
+introduces the clause you quoted rather than the narration. Those stay a reading task.
 
 Record the exact page as `editionUrl`. `https://shamela.ws/ajax/specialnumber2id/<book>/<number>`
 resolves a printed number straight to its page id, so the link never has to be hunted
@@ -44,6 +67,16 @@ for; `npm run verify:sources` uses it to re-check every stored link. Bukhari num
 Sultaniyya edition and Muslim numbering follows Abd al-Baqi, so the printed number
 must match the number in the URL. Suffixed Muslim identifiers (1955a, 2702b) mark
 successive narrations under one printed number; link the page carrying that narration.
+
+Prefer al-Bukhari wherever it carries the meaning. The Sultaniyya text on Shamela is
+fully vocalised and marks the prophetic matn with `«»`. The Muslim text there is only
+partly vocalised, mixes the muhaqqiq's notes in right after the matn — usually opening
+with a word in brackets, and never quotable — and carries real transcription defects.
+Where the Muslim page is visibly defective, choose a different narration rather than
+copying it, and never repair it: adding a diacritic or fixing a case ending inside a
+quotation is editing revelation-adjacent text, which this project does not do. If the
+only sound narration for a point is printed without vocalisation, quoting it as printed
+is acceptable, and the reason belongs in `docs/coverage.md`.
 
 `excerpt` marks a partial quotation of the prophetic wording, not a partial
 quotation of the page. A matn followed only by isnad notes (تابعه، ورواه، وقال لنا)
@@ -85,7 +118,16 @@ pages during development; this is a source review, not a claim of scholarly appr
 related lessons, and non-lesson verse references. `/daleel` lists every lesson's
 primary and supplementary evidence from the same records used by the lesson pages.
 It explains what this introductory site does not claim. Do not claim comprehensive
-coverage of Islam, guaranteed spiritual outcomes, or completed scholarly review.
+coverage of Islam, guaranteed spiritual outcomes, or completed scholarly review. This
+holds however far the collection grows: a wider guide is still a guide, and describing
+it as complete would be a false claim about the religion, not a marketing flourish.
+
+`/mujtanabat` gathers every lesson's `avoid` examples in one place, grouped by
+category, each linked back to its lesson. It renders from the same records; it never
+introduces a prohibition that no lesson carries. Because a bare list of sins is easy to
+misread, the page states its own limits directly: teaching examples rather than an
+exhaustive classification, sins differing in degree, no measure for judging anyone, no
+fatwa for a particular case, and repentance open to whoever fell into something.
 
 The authors' closing statement is original editorial wording, not a hadith or a
 quotation attributed to a Companion. Its permissibility and meaning were checked at
@@ -109,6 +151,11 @@ against Tafsir al-Sa'di on 3:135:
 https://quran.ksu.edu.sa/tafseer/saadi/sura3-aya135.html.
 The modesty lesson's invitation to ask needed religious questions is supported by
 https://sunnah.com/bukhari:130; no private or intimate details are requested by the app.
+Foundation summaries added with the wider collection were read against Tafsir al-Sa'di
+on the same host: https://quran.ksu.edu.sa/tafseer/saadi/sura4-aya36.html,
+https://quran.ksu.edu.sa/tafseer/saadi/sura6-aya151.html and
+https://quran.ksu.edu.sa/tafseer/saadi/sura49-aya12.html (accessed 2026-09-06). They
+remain brief editorial summaries, not verbatim tafsir and not independent rulings.
 
 ## Surah display names
 
@@ -140,6 +187,12 @@ Sahihs before being listed here.
   narration you may cite with a number.
 - `على شرط البخاري` / `على شرط الشيخين` means *meets their criteria*, never
   *narrated by them*. This confusion is the commonest source of a false attribution.
+- `مَنِ اسْتَعْمَلْنَاهُ عَلَى عَمَلٍ فَرَزَقْنَاهُ رِزْقًا، فَمَا أَخَذَ بَعْدَ ذَلِكَ فَهُوَ غُلُولٌ` — this
+  wording is not in Sahih Muslim. Muslim 1833 reads
+  `فَكَتَمَنَا مِخْيَطًا فَمَا فَوْقَهُ`. For a lesson on a job as a trust, Bukhari 7174
+  (`باب هدايا العمال`) is the narration that says it.
+- `أَعْطُوا الْأَجِيرَ أَجْرَهُ` and `لَا ضَرَرَ وَلَا ضِرَارَ` and `اتَّقِ اللهَ حَيْثُمَا كُنْتَ`
+  and the curse on `الراشي والمرتشي` are in neither Sahih.
 
 ## Numbering traps inside the two Sahihs
 
@@ -154,3 +207,23 @@ Sahihs before being listed here.
   citation is widespread and wrong.
 - Bukhari 2465 and 6229 both carry the haqq al-tariq narration in different wordings.
   Do not attach one's wording to the other's number.
+- Bukhari 6412's matn is on Shamela page 9625, but `specialnumber2id` resolves 6412 to
+  9626, which holds only its mutaba'a (`٦٤١٢ (م) … مِثْلَهُ`) and no wording. One printed
+  page can be split across two page ids, so `verify:sources` accepts a differing id only
+  when the two pages report the same printed ج and ص.
+- Muslim 49 prints two narrations (٧٨ and ٧٩) under one number on two pages, and Shamela
+  resolves `49` to the isnad-only page. A record for the matn would need the suffixed
+  Sunnah.com identifier `49a`, which cannot be checked while Sunnah.com is unreachable;
+  the ship parable (Bukhari 2493) carries the same point with an unsuffixed number.
+- Bukhari 3331 carries `اسْتَوْصُوا بِالنِّسَاءِ` cleanly, but on page 7738 the Sultaniyya
+  prints 5185 and 5186 inside one pair of `«»` with `٥١٨٦ -` mid-quotation, so 5186
+  cannot be quoted without either crossing a number boundary or opening on a bare `و`.
+- Bukhari 2086 does carry `وَآكِلِ الرِّبَا وَمُوكِلِهِ`, but in a list that also names
+  ثمن الدم، الواشمة and المصور. Quoting it on a lesson about usury imports three
+  unrelated and partly disputed questions the page cannot answer, so it is unused.
+- Bukhari's `باب إماطة الأذى` is مُعَلَّق (`وقال همام عن أبي هريرة…`, no isnad). Use 2472
+  in `باب من أخذ الغصن` for clearing a path.
+- Bukhari 6006 (`كَافِلُ الْيَتِيمِ`) has no Companion in its isnad at all, so its
+  `narrator` cannot be filled; 6005 ends on a hand gesture (`هَكَذَا`). Bukhari 6007 is
+  the clean narration in that باب, but it names الأرملة والمسكين and not the orphan, so
+  the lesson must not promise an orphan narration.

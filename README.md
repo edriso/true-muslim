@@ -1,8 +1,9 @@
 # مسلم بحق
 
-A small Arabic guide to Islamic character: understand a virtue, read its evidence,
-and try a practical action. Written in clear Modern Standard Arabic for a broad age
-range. The name is an invitation to self-improvement, not a judgment of anyone's faith.
+An Arabic guide to Islamic character: understand a virtue or a thing to refuse, read
+its evidence from the Qur'an and the two Sahihs, and try a practical action. Written in
+clear Modern Standard Arabic for a broad age range. The name is an invitation to
+self-improvement, not a judgment of anyone's faith.
 
 ## Start
 
@@ -26,20 +27,32 @@ TEST_ORIGIN=http://localhost:8787 npm run test:routes
 ```
 
 `npm run verify:sources` re-collates every narration against the printed critical
-edition it cites. It needs network access, so it is not part of `npm run check`;
-run it whenever a narration is added or its wording changes.
+edition it cites: the exact Arabic on the cited page, the printed number resolving to
+that page, and the recorded باب matching the page's own heading. It needs network access,
+so it is not part of `npm run check`; run it whenever a narration is added or its wording
+changes. It finds the text *somewhere* on the page, so it cannot tell you that a quoted
+span stays inside one narration or that an excerpt is labelled honestly — read the page.
 
 ## What is included
 
-- Twenty-six lessons across five relationships: with Allah, with people, with family,
-  with oneself, and with the world around us. Each has evidence, three suggested
-  actions, a scenario, a reflection question, examples of harm to avoid, and a boundary.
+- Seventy-five lessons across seven relationships: with Allah, with oneself, with the
+  tongue, with people, with family, with money and work, and with the world around us.
+  Each has evidence, three suggested actions, a scenario, a reflection question,
+  examples of harm to avoid, and a boundary. Roughly a fifth of the lessons are about
+  something to refuse rather than something to do — major sins, backbiting, tale-bearing,
+  mockery, false witness, wrongdoing, usury, cheating, squandering, intoxicants,
+  gambling, omen-reading —
+  because the guide covers both halves of the religion: what it commands and what it
+  forbids.
 - Arabic RTL pages set in self-hosted Noto Naskh Arabic, with Cairo headings and
   Amiri Quran for revelation; responsive layouts, keyboard focus, skip navigation,
   print styles, meaningful URLs and per-lesson metadata.
 - Server-rendered reading and navigation, with no account, analytics, or piety scoring.
-- A dedicated `/daleel` page with foundational verses, a complete lesson evidence index,
-  source methodology, explicit scope limits, and a way to report errors.
+- A dedicated `/daleel` page with six foundational verses, a complete lesson evidence
+  index, source methodology, explicit scope limits, and a way to report errors.
+- A `/mujtanabat` page that gathers every lesson's examples of harm in one place, with
+  the limits of such a list stated on the page: it is teaching material, not an
+  exhaustive classification of the forbidden and not a verdict on anyone.
 
 ## Layout
 
@@ -77,13 +90,15 @@ no route or component edit is needed.
 
 Quran text comes from the unmodified, checksum-pinned Tanzil corpus used by
 [learn-tajweed](https://github.com/edriso/learn-tajweed). Verses are resolved by numeric
-reference; the browser only receives those used. Hadith excerpts come from specific
-pages of Sahih al-Bukhari and Sahih Muslim on Sunnah.com, then collated against the
-printed critical editions — al-Tab'a al-Sultaniyya for al-Bukhari and Muhammad Fu'ad
-Abd al-Baqi's for Muslim — which is where the recorded wording, narrator, number,
-kitab and bab come from. All of it lives in `data/hadith.json`, and short excerpts are
-labelled explicitly. The integrity checks protect source bytes and references; they do
-not substitute for scholarly review.
+reference; the browser only receives those used. Narrations come from Sahih al-Bukhari
+and Sahih Muslim and from nowhere else. The wording, narrator, number, kitab and bab
+are read off the page of the printed critical edition — al-Tab'a al-Sultaniyya for
+al-Bukhari and Muhammad Fu'ad Abd al-Baqi's for Muslim — and each record also carries a
+Sunnah.com link so a reader can look the narration up. All of it lives in
+`data/hadith.json`, short excerpts are labelled explicitly, and a quotation is never
+edited to read better: no diacritics are added and no two narrations are joined. The
+integrity checks protect source bytes and references; they do not substitute for
+scholarly review.
 
 This is an introductory collection, not a complete curriculum or a fatwa service.
 

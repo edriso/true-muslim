@@ -12,8 +12,9 @@ before changing the app or build pipeline. These rules apply to agents and human
 - Character complements worship; never suggest it replaces prayer or other obligations.
 - Qur'an is inserted by reference from the checksum-pinned Tanzil corpus. Never type,
   paraphrase as revelation, silently normalize, or edit a verse. Do not weaken validation.
-- Hadith must have an inspected trusted source, exact quoted text, narrator, collection,
-  number, and supported authenticity. Clearly label excerpts. Never stitch narrations.
+- Hadith come from Sahih al-Bukhari or Sahih Muslim and nowhere else, with exact quoted
+  text, narrator, collection, number, and the printed page you read them on. Clearly
+  label excerpts. Never stitch narrations, and never add a diacritic to a quotation.
 - Collate every narration against the printed critical edition of its collection and
   record its كتاب, باب and edition page. A quoted excerpt must read correctly on its own;
   give it an explicit `attribution` when the default prophetic line would not fit.
@@ -53,6 +54,8 @@ before changing the app or build pipeline. These rules apply to agents and human
 - Run `npm run check` and `npm run build` before finishing. Never hide failures.
 - Run `npm run verify:sources` after touching `data/hadith.json`. It needs network
   access, so it stays out of `npm run check`; a failure means the record, not the tool.
+  A pass means the wording is on the cited page — not that the span stays inside one
+  narration, that `excerpt` is honest, or that the attribution introduces that clause.
 - Tests should protect source integrity, content references, and meaningful user behavior.
 - Commit coherent milestones with short imperative messages. No AI signatures or
   Co-Authored-By trailers. Do not commit local settings, credentials, or build outputs.
@@ -62,6 +65,9 @@ before changing the app or build pipeline. These rules apply to agents and human
 
 - Keep `/daleel` connected to the same lesson and source records as the reading pages.
   It must include the site's scope and limits, never an unsupported claim of completeness.
+- `/mujtanabat` renders only from the lessons' own `avoid` lists. Never let it introduce
+  a prohibition no lesson carries, and never drop the limits stated on it: examples not
+  a classification, no measure for judging anyone, no fatwa, and repentance open.
 - `content/guide.json` is the single source for category order and foundation verses.
   Tafsir URLs must identify the exact referenced verse.
 - Preserve narration suffixes in both URLs and visible numbers (for example `1955a`).
@@ -69,5 +75,9 @@ before changing the app or build pipeline. These rules apply to agents and human
   to the Prophet or a Companion without separately verifying that attribution.
 - New lessons include both useful actions and concrete examples of harm to avoid.
   Keep them appropriate for a broad age range; detailed personal rulings belong with scholars.
+- A lesson may teach something to refuse. Where its evidence carries a threat or negates
+  إيمان, the boundary must say the warning is about the act and not a verdict on a person.
+- Editorial prose explains; it never restates the quoted narration as if it were the
+  site's own sentence.
 - When changing lesson counts or scope, update README, architecture, and verification
   notes. Preserve existing lesson URLs even if the reading order improves.
