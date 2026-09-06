@@ -167,6 +167,24 @@ export function buildContent() {
     });
   assert.ok(lessons.length > 0);
   const guide = read('content/guide.json');
+  // The home page renders one group per category, so a category with no lesson
+  // would be a visible hole; a lesson order outside the run would drop a lesson
+  // from the reading path; and a narration nobody cites is an unreviewed record.
+  for (const category of guide.categories)
+    assert.ok(
+      lessons.some((lesson) => lesson.category === category),
+      `Category with no lessons: ${category}`,
+    );
+  assert.deepEqual(
+    [...orders].sort((a, b) => a - b),
+    lessons.map((_, index) => index + 1),
+    'Lesson order must be a contiguous run starting at 1',
+  );
+  for (const id of Object.keys(hadith))
+    assert.ok(
+      lessons.some((lesson) => lesson.hadith === id),
+      `Narration record no lesson cites: ${id}`,
+    );
   for (const foundation of guide.foundations) {
     assert.ok(foundation.title && foundation.summary);
     assert.ok(verses[foundation.reference], 'Unknown foundation verse');

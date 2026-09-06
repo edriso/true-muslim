@@ -2,6 +2,7 @@ import { test } from 'node:test';
 import assert from 'node:assert/strict';
 import { readFileSync } from 'node:fs';
 import { validateLesson, buildContent } from './content.mjs';
+import { fold } from './arabic.mjs';
 const lesson = JSON.parse(
   readFileSync('content/lessons/sincerity.json', 'utf8'),
 );
@@ -86,4 +87,65 @@ test('ordinals use Arabic-Indic digits without depending on runtime locale data'
   assert.equal(arabicOrdinal(1), '٠١');
   assert.equal(arabicOrdinal(26), '٢٦');
   assert.equal(arabicReference('1955a'), '١٩٥٥a');
+});
+// These invariants are asserted inside buildContent as well; re-checking the
+// emitted files is what proves the artifact the app imports really holds them.
+test('the collection has no empty category, gap in reading order, or unused narration', () => {
+  buildContent();
+  const guide = JSON.parse(readFileSync('content/guide.json', 'utf8'));
+  const lessons = JSON.parse(
+    readFileSync('content/lessons.generated.json', 'utf8'),
+  );
+  const hadith = JSON.parse(readFileSync('data/hadith.json', 'utf8'));
+  for (const category of guide.categories)
+    assert.ok(
+      lessons.some((lesson) => lesson.category === category),
+      category,
+    );
+  assert.deepEqual(
+    lessons.map((lesson) => lesson.order),
+    lessons.map((_, index) => index + 1),
+  );
+  for (const id of Object.keys(hadith))
+    assert.ok(
+      lessons.some((lesson) => lesson.hadith === id),
+      `unused narration ${id}`,
+    );
+  for (const foundation of guide.foundations)
+    assert.ok(foundation.lessons.length > 0, foundation.reference);
+});
+test('every lesson names something to avoid, so the collection teaches both sides', () => {
+  const lessons = JSON.parse(
+    readFileSync('content/lessons.generated.json', 'utf8'),
+  );
+  for (const lesson of lessons) {
+    assert.ok(lesson.avoid.length >= 2, lesson.slug);
+    // The avoided behaviours are editorial examples; they must never repeat a
+    // quoted narration back at the reader as if it were the evidence.
+    for (const item of lesson.avoid)
+      assert.ok(!/[\u0671\u0670\u06d6-\u06ed]/u.test(item), lesson.slug);
+  }
+});
+
+// The source verifier compares folded Arabic. A mark class written with the
+// characters themselves once parsed as U+0610-U+064B, which swallowed every
+// Arabic letter: text folded to '' and `''.includes('')` passed every record.
+// These assertions fail loudly if folding ever becomes lossy again.
+test('folding Arabic drops marks and keeps letters', () => {
+  assert.equal(fold('إِنَّ الصِّدْقَ يَهْدِي إِلَى الْبِرِّ'), 'ان الصدق يهدي الي البر');
+  assert.equal(fold('مَنْ لاَ يَرْحَمُ لاَ يُرْحَمُ'), 'من لا يرحم لا يرحم');
+  // Ligatured honorifics on the printed pages match their spelled-out form.
+  assert.equal(fold('قَالَ النَّبِيُّ ﷺ'), fold('قال النبي صلى الله عليه وسلم'));
+  assert.equal(fold('بَابُ فَضْلِ ذِكْرِ اللهِ ﷿'), fold('باب فضل ذكر الله عز وجل'));
+  // Orthographic variants fold together; different wording does not.
+  assert.equal(fold('رحمة'), fold('رَحْمَهْ'));
+  assert.notEqual(fold('الصدق'), fold('الكذب'));
+  assert.ok(fold('نص').length > 0);
+});
+test('every narration record survives folding as non-empty Arabic', () => {
+  const hadith = JSON.parse(readFileSync('data/hadith.json', 'utf8'));
+  for (const [id, record] of Object.entries(hadith)) {
+    assert.ok(fold(record.text).split(' ').length > 2, id);
+    assert.ok(fold(record.chapter).startsWith('باب'), id);
+  }
 });

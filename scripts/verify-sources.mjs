@@ -10,30 +10,13 @@
 // prove the narration is being applied to the right lesson — that stays a human
 // reading task, as docs/content-policy.md says.
 import { readFileSync } from 'node:fs';
+import { fold } from './arabic.mjs';
 
 const EDITIONS = { البخاري: 1681, مسلم: 1727 };
 const AGENT =
   'Mozilla/5.0 (Macintosh; Intel Mac OS X 10_15_7) AppleWebKit/537.36 ' +
   '(KHTML, like Gecko) Chrome/131.0 Safari/537.36';
-const DIACRITICS = /[ؐ-ًؚ-ٰٟۖ-ۭـ]/gu;
 const ARABIC_DIGITS = '٠١٢٣٤٥٦٧٨٩';
-
-/** Compare Arabic by skeleton: vowel marks and orthographic variants differ
- *  between the printed edition and Sunnah.com without the wording differing.
- *  The printed pages set the honorific as a ligature; spell it out first. */
-const fold = (value) =>
-  value
-    .replace(/\uFDFA/gu, 'صلى الله عليه وسلم')
-    .replace(/\uFDFB/gu, 'عز وجل')
-    .replace(/\u0610|\u0611|\u0612|\u0613|\u0614|\u0615/gu, '')
-    .replace(DIACRITICS, '')
-    .replace(/[أإآٱ]/gu, 'ا')
-    .replace(/ى/gu, 'ي')
-    .replace(/ة/gu, 'ه')
-    .replace(/[^ء-ي\s]/gu, ' ')
-    .replace(/\s+/gu, ' ')
-    .trim();
-
 const toArabicDigits = (value) =>
   String(value).replace(/[0-9]/gu, (digit) => ARABIC_DIGITS[Number(digit)]);
 
@@ -47,6 +30,10 @@ async function page(url) {
     .replace(/<[^>]+>/gu, ' ');
   return { title, body };
 }
+
+/** The printed juz' and page, as the page title states them. */
+const locator = (title) =>
+  /ج(\d+)\s*-\s*ص(\d+)/u.exec(title)?.slice(1).join(':') ?? '';
 
 /** Shamela maps a printed hadith number to the page carrying it. Narrations that
  *  share a number (1955a/1955b) resolve to the first of them, so a mismatch is
@@ -81,10 +68,30 @@ for (const [id, record] of Object.entries(records)) {
     continue;
   }
   const problems = [];
-  if (resolved && !record.editionUrl.endsWith(`/${resolved}`))
-    problems.push(
-      `edition link points at a different page than the printed number resolves to (${resolved})`,
-    );
+  if (resolved && !record.editionUrl.endsWith(`/${resolved}`)) {
+    // Shamela splits one printed page into several page ids when a narration is
+    // followed by its own mutaba'a, and resolves the number to the second of
+    // them. The record must link the id carrying the wording, so a differing id
+    // is accepted only when it is the same printed juz' and page.
+    let target;
+    try {
+      target = await page(
+        `https://shamela.ws/book/${EDITIONS[record.collection]}/${resolved}`,
+      );
+    } catch (error) {
+      // A fetch failure is the tool's problem, not the record's, so say so
+      // rather than reporting a page mismatch that was never established.
+      problems.push(
+        `could not read resolved page ${resolved}: ${error.message}`,
+      );
+    }
+    if (target && !locator(printed.title))
+      problems.push('printed juz and page are missing from the page title');
+    else if (target && locator(printed.title) !== locator(target.title))
+      problems.push(
+        `edition link points at a different printed page than the number resolves to (${resolved})`,
+      );
+  }
   if (!fold(printed.body).includes(fold(record.text)))
     problems.push('text not found on the printed page');
   // `attribution` is either the narration's own framing, which must appear on the
