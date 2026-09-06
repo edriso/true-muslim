@@ -12,9 +12,9 @@ do, and what to refuse.
 | With oneself        | Patience, pardon, humility, modesty, chastity, intoxicants and gambling, purity, contentment, a clear chest, time and health, consistency                                                                                                             | Anger, forgiveness, accepting correction, guarding oneself, what takes the mind and the money, cleanliness, envy, squandered hours, small deeds kept up                                                             |
 | With the tongue     | Truthfulness, guarding speech, backbiting, tale-bearing, mockery and insult, true witness                                                                                                                                   | What غيبة actually is, carrying words to spoil relations, nicknames and ridicule, testimony that decides a right                                                                |
 | With people         | Justice, ihsan, mercy, gentleness, every kindness, trust, promises, harming no one, brotherhood, greeting, thinking well, generosity, guests, the sick, relieving hardship, the widow and the poor, neighbors, permission, the road, reconciling, enjoining good, standing with the wronged, wrongdoing, inviolability | Fairness, careful work, the five duties owed a Muslim, shared walls, privacy and consent, public space, suspicion and spying, hospitality, illness, need, reconciliation, speaking up, and the inviolability of blood, property and honour |
-| With family         | Parents, kin, children, spouses, everyone a shepherd                                                                                                                                                                        | Good companionship, contact that is safe to keep, patience with the young, a spouse's right to your time, responsibility for those in your care                                 |
+| With family         | Parents, kin, children, spouses, responsibility for those in your care                                                                                                                                                                        | Good companionship, contact that is safe to keep, patience with the young, a spouse's right to your time, responsibility for those in your care                                 |
 | With money and work | Lawful earning, avoiding the doubtful, trust at work, wages, cheating, usury, debt, zakat, providing for family, squandering                                                                                                 | Earning rather than asking, doubtful gain, gifts to officials, paying a worker, hidden defects, interest, repayment, the poor's right in wealth, spending on one's own household, waste |
-| With the world      | Animals, guarding a blessing, clearing the path                                                                                                                                                                             | Kindness to what cannot ask, using a provision without wasting it, shared paths and shared resources                                                                            |
+| With the world      | Animals, cultivating the earth, clearing the path                                                                                                                                                                             | Kindness to what cannot ask, leaving something useful behind, shared paths and shared resources                                                                            |
 
 Six foundation verses frame the whole collection. An-Nahl 16:90 pairs doing good with
 avoiding wrongdoing. An-Nisa 4:58 anchors responsibility and fairness. Al-Baqarah 2:177
@@ -47,7 +47,7 @@ quotation is never presented as a sentence it is not.
 Two of these choices are worth stating plainly, because they cost something:
 
 - Al-Bukhari is preferred wherever it carries the meaning, because the Sultaniyya text
-  is fully vocalised. Ten of the seventy-four records come from Muslim, three of them
+  is fully vocalised. Nine of the seventy-four records come from Muslim, two of them
   added in this pass. The Muslim transcription is uneven, and where it is visibly
   defective the narration was not used: Muslim 1598's page prints
   `لَعَنَ رَسُولَ اللَّهِ … أَكَلَ الربا` for what the edition reads
@@ -57,6 +57,13 @@ Two of these choices are worth stating plainly, because they cost something:
   exactly as printed. Adding diacritics to a quotation is editing it, so the choice was
   between an unvocalised line and dropping the Prophet's own definition of غيبة from a
   guide that teaches against it. The definition was kept.
+
+Two pairs had to be pulled apart during review, because a wide collection makes
+near-duplicates easy to write. `moderation` (Bukhari 2320, the planting narration) is now
+about cultivating the earth and leaving benefit behind, which is what its narration says;
+squandering money sits with money in `wastefulness` (Bukhari 1477). `roads` keeps to حق
+الطريق — the gaze, the greeting, giving way — and `road-harm` keeps to إماطة الأذى and the
+shared resources around it.
 
 ## Deliberate boundaries
 
@@ -83,8 +90,8 @@ Two of these choices are worth stating plainly, because they cost something:
 - The site does not settle disputed questions of fiqh or suggest that reading the
   lessons has achieved anything.
 
-The last category is still the smallest, and honestly so. Kindness to animals, guarding
-a blessing and clearing a shared path are the three places where al-Bukhari and Muslim
+The last category is still the smallest, and honestly so. Kindness to animals,
+cultivating the earth and clearing a shared path are the three places where al-Bukhari and Muslim
 give a clean, self-contained narration about the world we live in without crossing into
 juristic detail; a fourth was attempted and dropped (Bukhari 239 supports only the
 "do not spoil what is shared" half of an environment lesson, and its heading could not

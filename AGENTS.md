@@ -19,9 +19,16 @@ before changing the app or build pipeline. These rules apply to agents and human
   record its كتاب, باب and edition page. A quoted excerpt must read correctly on its own;
   give it an explicit `attribution` when the default prophetic line would not fit.
 - Explanations and activities are editorial, not prophetic wording or binding rulings.
+- Keep revelation out of editorial fields. A verse or a matn belongs in the block that
+  displays it with its source, never restated as the site's own sentence in `meaning`,
+  `summary`, `actions`, `avoid`, `scenario` or `boundary` — least of all on the page that
+  already shows it. Describe what it says in your own words, or attribute it plainly.
 - Do not invent consensus. State relevant disagreement with reliable references or omit
   the disputed issue from this introductory guide. Refer personal fatwas to qualified scholars.
 - Evidence must support the actual claim. Search snippets and AI memory are not verification.
+- Every `avoid` item is reprinted on `/mujtanabat` as a standalone prohibition, so each one
+  must be carried by the lesson's own evidence. Do not slip a ruling into a bullet that the
+  lesson's `boundary` then declines to give.
 - Read the list of famous narrations that are not in either Sahih, and of the numbering
   traps, at the end of `docs/content-policy.md` before adding any narration.
 - No images of people, music, advertising, or manipulative engagement mechanics.
@@ -56,6 +63,12 @@ before changing the app or build pipeline. These rules apply to agents and human
   access, so it stays out of `npm run check`; a failure means the record, not the tool.
   A pass means the wording is on the cited page — not that the span stays inside one
   narration, that `excerpt` is honest, or that the attribution introduces that clause.
+- Do not trust a green check blindly. The shared folding in `scripts/arabic.mjs` once
+  removed every Arabic letter, so the verifier compared empty strings and passed everything it
+  was given. Write Arabic mark ranges as explicit escapes — spelled with the
+  characters themselves the class parses as U+0610-U+064B and swallows the alphabet — and
+  keep the test that folding preserves letters. When a check can only pass, it is not a
+  check.
 - Tests should protect source integrity, content references, and meaningful user behavior.
 - Commit coherent milestones with short imperative messages. No AI signatures or
   Co-Authored-By trailers. Do not commit local settings, credentials, or build outputs.
@@ -79,5 +92,11 @@ before changing the app or build pipeline. These rules apply to agents and human
   إيمان, the boundary must say the warning is about the act and not a verdict on a person.
 - Editorial prose explains; it never restates the quoted narration as if it were the
   site's own sentence.
+- Two lessons must not teach the same thing. A wide collection makes near-duplicates easy
+  to write; if two overlap, re-scope one to what its own narration actually says rather
+  than letting both drift toward the middle.
+- Read `git log` before rewriting prose at scale. Fixes recorded there — a passive that
+  left أهل العلم with no grammatical role, five boundaries reading as one filled-in
+  template — are easy to reintroduce across dozens of files in a single pass.
 - When changing lesson counts or scope, update README, architecture, and verification
   notes. Preserve existing lesson URLs even if the reading order improves.

@@ -10,13 +10,13 @@ adding 49 lessons and 48 narrations. Everything below was run, not assumed.
   the genuine Tanzil Uthmani 1.1 copyright block. `data/surah-names.json` is unchanged
   too (`956eb52f…787439`). Neither file is edited; the surah names whose upstream
   spelling drops hamzat al-qat' are still corrected at display time only.
-- All 85 referenced verses resolve from that corpus. The 52 references added in this
-  pass were read in full against the lesson they support before being used, and several
-  candidates were rejected on that reading: 5:2 was kept for نصرة المظلوم because
-  `وَتَعَاوَنُوا عَلَى الْبِرِّ وَالتَّقْوَىٰ` is the clause the lesson leans on, while 31:13 was
-  dropped from the omens lesson because equating التطيّر with الشرك is a scholarly
-  judgement the site has no sahih evidence for; 27:47, which is about التطيّر itself,
-  took its place.
+- All 85 referenced verses resolve from that corpus, and none of the original 33 was
+  dropped. The 52 added in this pass were read in full against the lesson they support,
+  and candidates were rejected on that reading: 31:13 was dropped from the omens lesson
+  because equating التطيّر with الشرك is a scholarly judgement the site has no sahih
+  evidence for, and 27:47, which is about التطيّر itself, took its place. Six more were
+  replaced during review for the same reason — a verse whose displayed span does less than
+  its placement implies is a claim the reader cannot check.
 - All 74 narrations were collated against the printed critical editions —
   al-Tab'a al-Sultaniyya for al-Bukhari (shamela.ws book 1681) and Muhammad Fu'ad
   Abd al-Baqi's edition for Muslim (book 1727). `npm run verify:sources` passes for all
@@ -29,7 +29,7 @@ adding 49 lessons and 48 narrations. Everything below was run, not assumed.
   for all five — and the Sunnah.com URL is carried as a reader-facing link whose number
   is the printed number. Nothing in the repository claims a Sunnah.com page was read.
   A contributor who can reach the site should spot-check the new links.
-- 64 of the 74 records are from al-Bukhari, whose Sultaniyya text is fully vocalised.
+- 65 of the 74 records are from al-Bukhari, whose Sultaniyya text is fully vocalised.
   Muslim's transcription on Shamela is uneven, so it was used only where al-Bukhari
   carries nothing equivalent, and never where the page looked defective.
 
@@ -134,6 +134,26 @@ adding 49 lessons and 48 narrations. Everything below was run, not assumed.
   غيبة, is printed unpointed on its page in this edition's transcription. It is shown
   exactly as printed, because adding diacritics to a quotation is editing it. It will
   look different from the other 73 records, and that is deliberate.
+- **The editorial review pass caught nine defects in the new content, all fixed.** The
+  worst was a regression: `تُسأل عنها أهل العلم` — a passive that leaves أهل العلم with no
+  grammatical role — went into sixteen boundaries, and commit `cc0de88` had removed that
+  exact clause from four boundaries in the smaller collection. The rest: Qur'anic wording
+  written as the site's own sentence in five lessons, directly under the block already
+  displaying the verse; two excerpts cut on a bare `و` with no antecedent; a lesson whose
+  `meaning` told the صبرة الطعام story while quoting a narration that does not contain it;
+  `zakat` quoted from two conditions into the instruction to Mu'adh, under an attribution
+  that introduces the narration rather than that clause; three complete matns flagged as
+  excerpts; four accusatives coordinated onto a nominative predicate; `نُقيس` for `نَقيس`;
+  and three reward claims the cited evidence does not carry (`أثقله في الميزان`, a
+  three-way promise about how du'a is answered, and `وإنما برحمة الله`).
+- **Six verses were replaced because they were doing less work than their placement
+  implied** — 9:108 opens on مسجد الضرار, 68:11 is a bare genitive, 51:26 has neither
+  subject nor guests in it, 2:172 is about eating and thanking rather than earning, 5:2 is
+  one of the longest verses in the corpus with the operative clause last, and 25:67 sat on
+  a lesson whose narration is about planting. They now read 74:4, 49:6, 51:24, 67:15,
+  4:135 and 11:61. 25:67 stayed in the collection as the supplementary verse behind
+  `wastefulness`'s boundary, where "not squandering is not stinginess either" is exactly
+  what it says.
 - **Two independent review passes were run over the finished change** — one editorial,
   against `docs/content-policy.md`, and one engineering, against the accessibility and
   layout rules in `AGENTS.md` — and their findings were applied rather than filed. The

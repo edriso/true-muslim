@@ -16,8 +16,8 @@ refuse, because the Qur'an itself pairs the two.
 - content/lessons/: one JSON record per lesson, separate from presentation
 - data/: pinned Qur'an corpus, hadith records, and source integrity manifest
 - lib/: typed content access
-- scripts/: offline content checks, the generated Qur'an subset, and the networked
-  re-collation of narrations against their printed editions
+- scripts/: offline content checks, the generated Qur'an subset, the shared Arabic
+  folding, and the networked re-collation of narrations against their printed editions
 - docs/: writing rules and architecture
 
 The generated Sites scaffold uses React, TypeScript, and Vinext (Next-compatible
